@@ -2,13 +2,12 @@ version: "3.8"
 services:
   microapp:
     image: "juxsta/pcmicroapp"
-    user: "node"
-    working_dir: /home/node/app
+    working_dir: /usr/src/app
     environment:
       - NODE_ENV=production
     volumes:
-      - ./:/home/node/app
+      - ./:/usr/src/app
     ports:
       - "8080:8080"
-    entrypoint: "yarn"
+    entrypoint: yarn
     command: "run serve"

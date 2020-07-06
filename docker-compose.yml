@@ -1,6 +1,6 @@
 version: "3.8"
 services:
-  node:
+  microapp:
     image: "juxsta/pcmicroapp"
     user: "node"
     working_dir: /home/node/app

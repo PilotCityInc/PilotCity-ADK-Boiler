@@ -38,20 +38,21 @@
     </v-app-bar>
 
     <v-content>
-      <HelloWorld/>
+      <Module/>
     </v-content>
   </v-app>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+// import HelloWorld from './components/HelloWorld.vue';
+import Module from './Module/Module.vue';
 
 export default Vue.extend({
   name: 'App',
 
   components: {
-    HelloWorld,
+    Module,
   },
 
   data: () => ({
@@ -59,3 +60,10 @@ export default Vue.extend({
   }),
 });
 </script>
+<style lang="scss">
+  html, body{
+    font-size: 16px;
+    width: 100%;
+    height: 100%;
+  }
+</style>

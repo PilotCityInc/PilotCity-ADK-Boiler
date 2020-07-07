@@ -3,6 +3,8 @@ services:
   microapp:
     image: "juxsta/pcmicroapp"
     working_dir: /usr/src/app
+    environment:
+      - NODE_ENV=development
     volumes:
       - ./:/usr/src/app
     ports:

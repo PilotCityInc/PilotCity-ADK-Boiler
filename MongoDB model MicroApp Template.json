@@ -2,7 +2,7 @@
     "GUID": "551ee350-c155-11ea-9c9e-a7eee704cb70",
     "modelName": "MicroApp Template",
     "code": "",
-    "lastModifTS": "2020-07-08T23:26:27.359Z",
+    "lastModifTS": "2020-07-09T00:17:27.369Z",
     "persistenceSchemaVersion": "4",
     "description": "",
     "comments": "",
@@ -778,7 +778,8 @@
         "0a99e360-c160-11ea-9c9e-a7eee704cb70": "up",
         "8d6864d0-c168-11ea-9c9e-a7eee704cb70": "^[a-zA-Z0-9_.-]+$",
         "9f4a7d00-c168-11ea-9c9e-a7eee704cb70": "fk users._id to MApracticelog.log.^[a-zA-Z0-9_.-]+$",
-        "46c96e20-c172-11ea-9c9e-a7eee704cb70": "fk users._id to team.user_ids.[0]"
+        "46c96e20-c172-11ea-9c9e-a7eee704cb70": "fk users._id to team.user_ids.[0]",
+        "6736ce30-c179-11ea-9c9e-a7eee704cb70": "New_Database"
     },
     "definitions": {
         "type": "definitions",

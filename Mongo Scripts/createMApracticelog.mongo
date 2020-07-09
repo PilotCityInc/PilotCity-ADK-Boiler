@@ -1,0 +1,6 @@
+db.MApracticelog.insertOne({
+    log:{
+        "5f06340df650e8721887261e":20
+    },
+    team_id:ObjectId("5f064300f650e87218872627")
+})

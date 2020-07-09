@@ -1,0 +1,39 @@
+.module-metrics{
+  height: 100%;
+}
+.module-metrics{
+  &__container{
+    width: 100%;
+  }
+  &__filter{
+    display: flex;
+    justify-content: center;
+    &-chip{
+      min-width: 84px;
+      font-weight: 700;
+      &.v-chip.theme--light:not(.v-chip-active){
+        background-color: #BDBDBD;
+        color: #fff;
+      }
+      & .theme--light.v-icon{
+        color: #fff;
+      }
+
+      &-add.v-chip.theme--light:not(.v-chip-active){
+        border: 1px #BDBDBD dashed;
+        background-color: #fff;
+        & .theme--light.v-icon{
+          color: #BDBDBD;
+        }
+      }
+    }
+  }
+  &__data{
+    width: 100%;
+    display: flex;
+    & div{
+      grid-row: 2/3;
+      grid-column: 2/3;
+    }
+  }
+}

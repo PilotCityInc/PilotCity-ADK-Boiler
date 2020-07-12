@@ -1,9 +1,9 @@
 
-.module-details{
+.module-instruct{
   display: flex;
   justify-content: center;
 }
-.module-details{
+.module-instruct{
  &__container{
    max-width: 100%;
    max-width: 425px;
@@ -55,7 +55,7 @@
      }
    }
     @media only screen and (max-width: 600px){
-    .module-details__instructions{
+    .module-instruct__instructions{
       &-item{
         left: 0%;
         width: 100%;
@@ -86,7 +86,7 @@
    }
  }
   @media only screen and (max-width: 600px){
-    .module-details__actions{
+    .module-instruct__actions{
       grid-template-rows: 1fr 1fr;
       grid-template-columns: 1fr;
       &-cancel{

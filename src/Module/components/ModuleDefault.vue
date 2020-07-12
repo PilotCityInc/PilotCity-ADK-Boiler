@@ -1,5 +1,7 @@
 <template>
-  <div class="module-preview"></div>
+  <div class="module-preview">
+    
+  </div>
 </template>
 
 <script lang="ts">

@@ -7,7 +7,7 @@
           <v-img
           height="87px"
           max-width="93px"
-          src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2c9addc0-037f-4fd8-a226-e21468527db6%2FUntitled.png?table=block&id=c58eba0c-df1a-46c2-8bee-5578fde10ebe&width=5120&cache=v2">
+          src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2c9addc0-037f-4fd8-a226-e21468527db6%2FUntitled.png?table=block&id=c58eba0c-df1a-46c2-8bee-5578fde10ebe&width=2610&cache=v2">
           </v-img>
         </div>
         <div class="module__header text-md-h5 text-sm-subtitle-1 d-flex align-end">
@@ -23,7 +23,7 @@
             <v-btn
             :ripple="false"
             class="module__pagination-button elevation-0"
-            color="white" height="40" small
+            color="transparent" height="40" small
             @click="currentPage=page">
               {{ page }}
             </v-btn>
@@ -46,17 +46,16 @@ import * as Module from './components';
 export default Vue.extend({
   name: 'Microapp',
   components: {
-    'module-input': Module.Input,
-    'module-details': Module.Details,
+    'module-instruct': Module.Instruct,
     'module-metrics': Module.Metrics,
-    'module-output': Module.Output,
+    'module-edit': Module.Edit,
     'module-outcomes': Module.Outcomes,
     'module-preview': Module.Default,
   },
   data: () => ({
     moduleName: 'Practice Log',
-    pages: ['Input', 'Details', 'Metrics', 'Output', 'Outcomes', 'Preview'],
-    currentPage: 'Details',
+    pages: ['Metrics', 'Instruct', 'Outcomes', 'edit', 'Preview'],
+    currentPage: 'Instruct',
   }),
   computed: {
     getComponent() {

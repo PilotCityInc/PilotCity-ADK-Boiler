@@ -1,9 +1,9 @@
 <template>
 <!--  TODO: make the inputs into actual components -->
-  <v-container class="module-details">
-    <div class="module-details__container">
-      <div class="module-details__description">
-        <div class="module-details__description-label
+  <v-container class="module-instruct">
+    <div class="module-instruct__container">
+      <div class="module-instruct__description">
+        <div class="module-instruct__description-label
         font-weight-black text-subtitle-2 text-uppercase">
           <span>Instructions</span>
         </div>
@@ -11,36 +11,36 @@
           {{moduleDescription}}
         </div>
       </div>
-      <div class="module-details__instructions">
-        <div class="module-details__instructions-item"
+      <div class="module-instruct__instructions">
+        <div class="module-instruct__instructions-item"
         v-for="(item, index) in moduleInstructions" :key="item">
-          <v-avatar size="35" class="module-details__instructions-av
+          <v-avatar size="35" class="module-instruct__instructions-av
           font-weight-black text-caption d-none d-sm-flex">
             {{ index+1 }}
           </v-avatar>
           <div contenteditable @input="updateItem($event, index)"
-          class="module-details__instructions-text font-weight-black text-body-1">
+          class="module-instruct__instructions-text font-weight-black text-body-1">
             {{ item }}
           </div>
         </div>
         <div @click="addItem"
-        class="module-details__instructions-add
+        class="module-instruct__instructions-add
         font-weight-black text-body-1">
           <v-icon
-          class="module-details__instructions-add-icon">
+          class="module-instruct__instructions-add-icon">
             mdi-plus
           </v-icon>
         </div>
       </div>
       <div class="d-flex flex-column">
-        <div class="module-details__actions">
-          <div class="module-details__actions-cancel text-button">
+        <div class="module-instruct__actions">
+          <div class="module-instruct__actions-cancel text-button">
             <a href="">
               cancel
             </a>
           </div>
           <v-btn :ripple="false" height="40" outlined
-          class="active module-details__actions-save elevation-0">
+          class="active module-instruct__actions-save elevation-0">
             Save
           </v-btn>
         </div>
@@ -61,7 +61,7 @@ export default Vue.extend({
       'Enter number of minutes to log and add “m” at end',
       'Click on “Log” button to enter the minutes practiced',
       'View total logged minutes',
-    ],
+    ], // TODO: parse for empty string (strings w/o _real_ characters)
   }),
   methods: {
     updateDesc(e: Event) {

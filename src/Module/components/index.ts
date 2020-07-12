@@ -1,15 +1,13 @@
-import Input from './ModuleInput.vue';
-import Details from './ModuleDetails.vue';
+import Instruct from './ModuleInstruct.vue';
 import Metrics from './ModuleMetrics.vue';
-import Output from './ModuleOutput.vue';
+import Edit from './ModuleEdit.vue';
 import Outcomes from './ModuleOutcomes.vue';
 import Default from './ModuleDefault.vue';
 
 export {
-  Input,
-  Details,
+  Instruct,
   Metrics,
-  Output,
+  Edit,
   Outcomes,
   Default,
 };

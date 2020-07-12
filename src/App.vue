@@ -24,6 +24,7 @@ export default Vue.extend({
 });
 </script>
 <style lang="scss">
+@import '~vuetify/src/styles/styles.sass';
   html, body{
     font-family: "Raleway";
     font-size: 16px;

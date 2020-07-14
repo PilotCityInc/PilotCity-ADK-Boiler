@@ -19,7 +19,12 @@ db.createCollection( "MApracticelog",{
                 },
                 "log": {
                     "bsonType": "object",
-                    "additionalProperties": false,
+                    "properties": {
+                        "lastModified": {
+                            "bsonType": "timestamp"
+                        }
+                    },
+                    "additionalProperties": true,
                     "patternProperties": {
                         "^[a-zA-Z0-9_.-]+$": {
                             "bsonType": "int"

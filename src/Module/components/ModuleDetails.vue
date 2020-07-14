@@ -51,17 +51,28 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import gql from 'graphql-tag';
 
 export default Vue.extend({
   name: 'ModuleInstruct',
-
+  apollo: {
+    moduleInstructions: {
+      query: gql`query {
+  mApracticelogOpt(query:{_id:"5f0d224b20997574dc3ea817"}) {
+    instructions
+  }
+}`,
+      update: (data) => data.mApracticelogOpt.instructions,
+    },
+  },
   data: () => ({
+    programOptId: '5f0639aef650e8721887261f',
     moduleDescription: "As you practice, use and apply the employer's product or service, log how many minutes you use it each time.",
-    moduleInstructions: [
-      'Enter number of minutes to log and add “m” at end',
-      'Click on “Log” button to enter the minutes practiced',
-      'View total logged minutes',
-    ],
+    // moduleInstructions: [
+    //   'Enter number of minutes to log and add “m” at end',
+    //   'Click on “Log” button to enter the minutes practiced',
+    //   'View total logged minutes',
+    // ],
   }),
   methods: {
     updateDesc(e: Event) {

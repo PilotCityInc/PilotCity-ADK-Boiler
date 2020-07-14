@@ -14,7 +14,7 @@ db.createCollection( "team",{
                 "_id": {
                     "bsonType": "objectId"
                 },
-                "team_name": {
+                "teamName": {
                     "bsonType": "string"
                 },
                 "user_ids": {
@@ -28,7 +28,7 @@ db.createCollection( "team",{
             },
             "required": [
                 "_id",
-                "team_name",
+                "teamName",
                 "user_ids"
             ]
         }

@@ -1,6 +1,15 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import Vue from 'vue';
 import VueApollo from 'vue-apollo';
-import { createApolloClient, restartWebsockets } from 'vue-cli-plugin-apollo/graphql-client';
+import {
+  createApolloClient, restartWebsockets,
+} from 'vue-cli-plugin-apollo/graphql-client';
+//  Allows for using secure endpoint with apollo
+import { setContext } from 'apollo-link-context';
+import { HttpLink, InMemoryCache } from 'apollo-boost';
+// Realm Setup
+// eslint-disable-next-line import/no-unresolved
+import * as RealmWeb from 'realm-web';
 
 // Install the vue plugin
 Vue.use(VueApollo);
@@ -8,8 +17,42 @@ Vue.use(VueApollo);
 // Name of the localStorage item
 const AUTH_TOKEN = 'apollo-token';
 
+//  Mongo App Setup
+//  ! Replace with you App ID from Mongo Realm
+export const APP_ID = 'microapp-lokxi';
+
+const app = new RealmWeb.App({
+  id: APP_ID,
+  baseUrl: 'https://realm.mongodb.com',
+});
+
 // Http endpoint
-const httpEndpoint = process.env.VUE_APP_GRAPHQL_HTTP || 'http://localhost:4000/graphql';
+// ! Hide endpoint for production repos. Use .env variables
+const httpEndpoint = process.env.VUE_APP_GRAPHQL_HTTP || 'https://stitch.mongodb.com/api/client/v2.0/app/microapp-lokxi/graphql';
+const authorizationHeaderLink = setContext(async (_, { headers }) => {
+  if (app.currentUser) {
+    // Refreshing custom data also refreshes the access token
+    await app.currentUser.refreshCustomData();
+  } else {
+    // If no user is logged in, log in an anonymous user
+    await app.logIn(RealmWeb.Credentials.anonymous());
+  }
+  // Get a valid access token for the current user
+  const { accessToken } = app.currentUser;
+  if (accessToken) { console.log('I HAVE ACCESS'); }
+  console.log('currentUser', accessToken, app.currentUser);
+
+  // Set the Authorization header, preserving any other headers
+  return {
+    headers: {
+      ...headers,
+      Authorization: `Bearer ${accessToken}`,
+    },
+  };
+});
+// Construct a new Apollo HttpLink that connects to your app's GraphQL endpoint
+const graphql_url = `https://realm.mongodb.com/api/client/v2.0/app/${APP_ID}/graphql`;
+const httpLink = new HttpLink({ uri: graphql_url });
 // Files URL root
 export const filesRoot = process.env.VUE_APP_FILES_ROOT || httpEndpoint.substr(0, httpEndpoint.indexOf('/graphql'));
 
@@ -21,7 +64,7 @@ const defaultOptions = {
   httpEndpoint,
   // You can use `wss` for secure connection (recommended in production)
   // Use `null` to disable subscriptions
-  wsEndpoint: process.env.VUE_APP_GRAPHQL_WS || 'ws://localhost:4000/graphql',
+  wsEndpoint: null,
   // LocalStorage token
   tokenName: AUTH_TOKEN,
   // Enable Automatic Query persisting with Apollo Engine
@@ -35,10 +78,10 @@ const defaultOptions = {
   // Override default apollo link
   // note: don't override httpLink here, specify httpLink options in the
   // httpLinkOptions property of defaultOptions.
-  // link: myLink
+  link: authorizationHeaderLink.concat(httpLink),
 
   // Override default cache
-  // cache: myCache
+  cache: new InMemoryCache(),
 
   // Override the way the Authorization header is set
   // getAuth: (tokenName) => ...
@@ -64,7 +107,7 @@ export function createProvider(options = {}) {
     defaultClient: apolloClient,
     defaultOptions: {
       $query: {
-        // fetchPolicy: 'cache-and-network',
+        fetchPolicy: 'cache-and-network',
       },
     },
     errorHandler(error) {

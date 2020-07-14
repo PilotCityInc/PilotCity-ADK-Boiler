@@ -10,5 +10,4 @@ services:
       - /usr/src/app/node_modules
     ports:
       - 8080:8080
-    entrypoint: yarn
-    command: "run serve"
+    command: "npm run serve"

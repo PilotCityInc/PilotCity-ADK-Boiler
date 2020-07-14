@@ -2,7 +2,7 @@
     "GUID": "551ee350-c155-11ea-9c9e-a7eee704cb70",
     "modelName": "MicroApp Template",
     "code": "",
-    "lastModifTS": "2020-07-09T00:17:27.369Z",
+    "lastModifTS": "2020-07-14T03:08:52.545Z",
     "persistenceSchemaVersion": "4",
     "description": "",
     "comments": "",
@@ -108,12 +108,36 @@
                             "id": "",
                             "sampleName": "",
                             "isPatternField": true
+                        },
+                        {
+                            "type": "timestamp",
+                            "primaryKey": false,
+                            "relationshipType": "",
+                            "parentRelationship": "",
+                            "childRelationships": [],
+                            "foreignCollection": "",
+                            "foreignField": [],
+                            "default": "",
+                            "format": "",
+                            "sample": "",
+                            "GUID": "17d820a0-c57f-11ea-858c-11d45ba0f11c",
+                            "name": "lastModified",
+                            "code": "",
+                            "description": "",
+                            "comments": "",
+                            "dependencies": [],
+                            "required": false,
+                            "id": "",
+                            "hackoladeMeta": {},
+                            "error": {
+                                "name": false
+                            }
                         }
                     ],
                     "dependencies": [],
                     "minProperties": "",
                     "maxProperties": "",
-                    "additionalProperties": false,
+                    "additionalProperties": true,
                     "enum": [],
                     "GUID": "c70ed6b0-c159-11ea-9c9e-a7eee704cb70",
                     "name": "log",
@@ -260,7 +284,7 @@
                     "enum": [],
                     "sample": "",
                     "GUID": "af146160-c159-11ea-9c9e-a7eee704cb70",
-                    "name": "min_req",
+                    "name": "minReq",
                     "code": "",
                     "description": "minimum requirement to complete this microapp\n",
                     "comments": "",
@@ -268,7 +292,9 @@
                     "required": true,
                     "id": "",
                     "hackoladeMeta": {},
-                    "error": {}
+                    "error": {
+                        "name": false
+                    }
                 },
                 {
                     "type": "numeric",
@@ -379,7 +405,7 @@
                     "enum": [],
                     "sample": "",
                     "GUID": "a6e0fe60-c157-11ea-9c9e-a7eee704cb70",
-                    "name": "team_name",
+                    "name": "teamName",
                     "code": "",
                     "description": "",
                     "comments": "",
@@ -761,7 +787,7 @@
         "4a3404a0-c157-11ea-9c9e-a7eee704cb70": "_id",
         "9ee00b20-c157-11ea-9c9e-a7eee704cb70": "team",
         "ae152bc0-c157-11ea-9c9e-a7eee704cb70": "_id",
-        "a6e0fe60-c157-11ea-9c9e-a7eee704cb70": "team_name",
+        "a6e0fe60-c157-11ea-9c9e-a7eee704cb70": "teamName",
         "cf777750-c157-11ea-9c9e-a7eee704cb70": "user_ids",
         "edee89d0-c157-11ea-9c9e-a7eee704cb70": "users",
         "23461620-c158-11ea-9c9e-a7eee704cb70": "_id",
@@ -770,7 +796,7 @@
         "7ccc10e0-c159-11ea-9c9e-a7eee704cb70": "instructions",
         "800ff140-c159-11ea-9c9e-a7eee704cb70": "goal",
         "91306720-c159-11ea-9c9e-a7eee704cb70": "team_id",
-        "af146160-c159-11ea-9c9e-a7eee704cb70": "min_req",
+        "af146160-c159-11ea-9c9e-a7eee704cb70": "minReq",
         "c70ed6b0-c159-11ea-9c9e-a7eee704cb70": "log",
         "ece94770-c15a-11ea-9c9e-a7eee704cb70": "fk team._id to ma-practicelog.team_id",
         "036c37f0-c15b-11ea-9c9e-a7eee704cb70": "practicelog_id",
@@ -779,7 +805,8 @@
         "8d6864d0-c168-11ea-9c9e-a7eee704cb70": "^[a-zA-Z0-9_.-]+$",
         "9f4a7d00-c168-11ea-9c9e-a7eee704cb70": "fk users._id to MApracticelog.log.^[a-zA-Z0-9_.-]+$",
         "46c96e20-c172-11ea-9c9e-a7eee704cb70": "fk users._id to team.user_ids.[0]",
-        "6736ce30-c179-11ea-9c9e-a7eee704cb70": "New_Database"
+        "6736ce30-c179-11ea-9c9e-a7eee704cb70": "New_Database",
+        "17d820a0-c57f-11ea-858c-11d45ba0f11c": "lastModified"
     },
     "definitions": {
         "type": "definitions",
@@ -855,12 +882,8 @@
                 ],
                 "collapsedNodes": [],
                 "activeRelationship": "",
-                "activeRelationshipFields": {
-                    "childField": [],
-                    "parentField": []
-                },
                 "selectedCollections": [],
-                "displayColorPicker": false,
+                "decorativeSymbols": [],
                 "graphView": {
                     "erd": [],
                     "buckets": [],
@@ -871,7 +894,11 @@
                     "forceLayout": true,
                     "defaultLinkLength": 300
                 },
-                "decorativeSymbols": [],
+                "activeRelationshipFields": {
+                    "childField": [],
+                    "parentField": []
+                },
+                "displayColorPicker": false,
                 "nestedCollectionsLayout": "horizontal"
             },
             "collectionLevel": {},

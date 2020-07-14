@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:10.13.0
 WORKDIR /usr/src/app
 COPY package*.json ./
 RUN yarn install

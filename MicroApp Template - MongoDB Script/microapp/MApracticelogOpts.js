@@ -24,7 +24,7 @@ db.createCollection( "MApracticelogOpts",{
                         "bsonType": "string"
                     }
                 },
-                "min_req": {
+                "minReq": {
                     "bsonType": "int",
                     "description": "minimum requirement to complete this microapp\n",
                     "minimum": -1
@@ -36,7 +36,7 @@ db.createCollection( "MApracticelogOpts",{
             "required": [
                 "_id",
                 "instructions",
-                "min_req",
+                "minReq",
                 "goal"
             ]
         }

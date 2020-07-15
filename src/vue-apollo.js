@@ -25,10 +25,10 @@ const app = new RealmWeb.App({
   id: APP_ID,
   baseUrl: 'https://realm.mongodb.com',
 });
-
+const graphql_url = `https://realm.mongodb.com/api/client/v2.0/app/${APP_ID}/graphql`;
 // Http endpoint
 // ! Hide endpoint for production repos. Use .env variables
-const httpEndpoint = process.env.VUE_APP_GRAPHQL_HTTP || 'https://stitch.mongodb.com/api/client/v2.0/app/microapp-lokxi/graphql';
+const httpEndpoint = process.env.VUE_APP_GRAPHQL_HTTP || graphql_url;
 const authorizationHeaderLink = setContext(async (_, { headers }) => {
   if (app.currentUser) {
     // Refreshing custom data also refreshes the access token
@@ -51,7 +51,7 @@ const authorizationHeaderLink = setContext(async (_, { headers }) => {
   };
 });
 // Construct a new Apollo HttpLink that connects to your app's GraphQL endpoint
-const graphql_url = `https://realm.mongodb.com/api/client/v2.0/app/${APP_ID}/graphql`;
+
 const httpLink = new HttpLink({ uri: graphql_url });
 // Files URL root
 export const filesRoot = process.env.VUE_APP_FILES_ROOT || httpEndpoint.substr(0, httpEndpoint.indexOf('/graphql'));

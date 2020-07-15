@@ -12,17 +12,25 @@
         </div>
       </div>
       <div class="module-details__instructions">
-        <div class="module-details__instructions-item"
-        v-for="(item, index) in moduleInstructions" :key="item">
-          <v-avatar size="35" class="module-details__instructions-av
-          font-weight-black text-caption d-none d-sm-flex">
-            {{ index+1 }}
-          </v-avatar>
-          <div contenteditable @input="updateItem($event, index)"
-          class="module-details__instructions-text font-weight-black text-body-1">
-            {{ item }}
-          </div>
-        </div>
+       <ApolloQuery :query=" gql`query {
+  mApracticelogOpt(query:{_id:"5f0d224b20997574dc3ea817"}) {
+    instructions
+  }
+}`">
+           <template v-slot="{result: { loading, error, data }}">
+                <div class="module-details__instructions-item"
+                v-for="(item, index) in data.mApracticelogOpt.instructions" :key="item">
+                  <v-avatar size="35" class="module-details__instructions-av
+                  font-weight-black text-caption d-none d-sm-flex">
+                    {{ index+1 }}
+                  </v-avatar>
+                  <div contenteditable @input="updateItem($event, index)"
+                  class="module-details__instructions-text font-weight-black text-body-1">
+                    {{ item }}
+                  </div>
+                </div>
+           </template>
+       </ApolloQuery>
         <div @click="addItem"
         class="module-details__instructions-add
         font-weight-black text-body-1">
@@ -56,23 +64,15 @@ import gql from 'graphql-tag';
 export default Vue.extend({
   name: 'ModuleInstruct',
   apollo: {
-    moduleInstructions: {
-      query: gql`query {
-  mApracticelogOpt(query:{_id:"5f0d224b20997574dc3ea817"}) {
-    instructions
-  }
-}`,
-      update: (data) => data.mApracticelogOpt.instructions,
-    },
   },
   data: () => ({
     programOptId: '5f0639aef650e8721887261f',
     moduleDescription: "As you practice, use and apply the employer's product or service, log how many minutes you use it each time.",
-    // moduleInstructions: [
-    //   'Enter number of minutes to log and add “m” at end',
-    //   'Click on “Log” button to enter the minutes practiced',
-    //   'View total logged minutes',
-    // ],
+    moduleInstructions: [
+      'Enter number of minutes to log and add “m” at end',
+      'Click on “Log” button to enter the minutes practiced',
+      'View total logged minutes',
+    ],
   }),
   methods: {
     updateDesc(e: Event) {
@@ -88,6 +88,5 @@ export default Vue.extend({
     addItem() {
       this.moduleInstructions.push('');
     },
-  },
 });
 </script>

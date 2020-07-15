@@ -1,12 +1,14 @@
 <template>
-  <div class="module-preview"></div>
+<div class="module-input">
+
+</div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 
 export default Vue.extend({
-  name: 'ModuleDefault',
+  name: 'ModuleInput',
 
   data: () => ({
     //

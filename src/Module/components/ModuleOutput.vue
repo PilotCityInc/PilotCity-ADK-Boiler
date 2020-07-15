@@ -1,12 +1,12 @@
 <template>
-  <div class="module-preview"></div>
+<div class="module-output"></div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 
 export default Vue.extend({
-  name: 'ModuleDefault',
+  name: 'ModuleOutput',
 
   data: () => ({
     //

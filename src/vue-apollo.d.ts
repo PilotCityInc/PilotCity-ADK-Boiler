@@ -6,6 +6,6 @@ declare module 'vue/types/vue' {
     $apolloProvider: VueApollo;
   }
 }
-declare module 'vue-apollo'{
-  function createProvider(): VueApollo;
-}
+// declare module 'vue-apollo'{
+//   function createProvider(): VueApollo;
+// }

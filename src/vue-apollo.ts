@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/camelcase */
+// !TODO: fix type errors :]
 import Vue from 'vue';
 import VueApollo from 'vue-apollo';
 import {

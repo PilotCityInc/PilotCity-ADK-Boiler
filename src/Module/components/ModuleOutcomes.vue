@@ -6,7 +6,7 @@
           Minimum amount of minutes required before unlocking
         </div>
         <div class="module-outcomes__dropdown">
-          <v-menu offset-y top :close-on-content-click="closeOnContentClick">
+          <v-menu offset-y top>
             <template v-slot:activator="{ on, attrs }">
               <v-btn
                 block
@@ -15,7 +15,7 @@
                 v-bind="attrs"
                 v-on="on"
               >
-                {{selectedReq}}
+                {{minReq}}
                 <v-icon left class="ml-1">mdi-chevron-down</v-icon>
               </v-btn>
             </template>
@@ -23,7 +23,7 @@
               <v-list-item
                 v-for="(op, index) in minutesReq"
                 :key="index"
-                @click="selectedReq=op"
+                @click="minReq=op"
               >
                 <v-list-item-title>{{ op }}</v-list-item-title>
               </v-list-item>
@@ -34,7 +34,7 @@
           Amount of minutes desired as a goal from organizer
         </div>
         <div class="module-outcomes__dropdown">
-          <v-menu offset-y top :close-on-content-click="closeOnContentClick">
+          <v-menu offset-y top>
             <template v-slot:activator="{ on, attrs }">
               <v-btn
                 block
@@ -43,7 +43,7 @@
                 v-bind="attrs"
                 v-on="on"
               >
-                {{selectedNec}}
+                {{goal}}
                 <v-icon left class="ml-1">mdi-chevron-down</v-icon>
               </v-btn>
             </template>
@@ -51,7 +51,7 @@
               <v-list-item
                 v-for="(op, index) in minutesNec"
                 :key="index"
-                @click="selectedNec=op"
+                @click="goal=op"
               >
                 <v-list-item-title>{{ op }}</v-list-item-title>
               </v-list-item>
@@ -78,10 +78,22 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import gql from 'graphql-tag';
 
 export default Vue.extend({
   name: 'ModuleOutcomes',
-
+  apollo: {
+    goal: gql`query outcomeQuery{
+      mApracticelogOpt{
+        goal,
+      }
+    }`,
+    minReq: gql`query outcomeQuery{
+      mApracticelogOpt{
+        minReq,
+      }
+    }`,
+  },
   data: () => ({
     minutesReq: [
       '10m',
@@ -102,8 +114,8 @@ export default Vue.extend({
       '900m',
       '1000m',
     ],
-    selectedReq: 'Select',
-    selectedNec: 'Select',
+    minReq: 'Select',
+    goal: 'Select',
   }),
 });
 </script>

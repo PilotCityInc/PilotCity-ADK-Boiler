@@ -13,7 +13,7 @@
       </div>
       <div class="module-instruct__instructions">
         <div class="module-instruct__instructions-item"
-        v-for="(item, index) in moduleInstructions" :key="item">
+        v-for="(item, index) in instructions" :key="item">
           <v-avatar size="35" class="module-instruct__instructions-av
           font-weight-black text-caption d-none d-sm-flex">
             {{ index+1 }}
@@ -36,9 +36,9 @@
       <div class="d-flex flex-column">
         <div v-if="!readonly" class="module-instruct__actions">
           <div class="module-instruct__actions-cancel text-button">
-            <a href="">
+            <span href="">
               cancel
-            </a>
+            </span>
           </div>
           <v-btn :ripple="false" height="40" outlined
           class="active module-instruct__actions-save elevation-0">
@@ -52,6 +52,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import gql from 'graphql-tag';
 
 export default Vue.extend({
   name: 'ModuleInstruct',
@@ -61,9 +62,16 @@ export default Vue.extend({
       default: false,
     },
   },
+  apollo: {
+    instructions: gql`query instructQuery{
+      mApracticelogOpt{
+        instructions
+      }
+    }`,
+  },
   data: () => ({
     moduleDescription: "As you practice, use and apply the employer's product or service, log how many minutes you use it each time.",
-    moduleInstructions: [
+    instructions: [
       'Enter number of minutes to log and add “m” at end',
       'Click on “Log” button to enter the minutes practiced',
       'View total logged minutes',
@@ -77,11 +85,11 @@ export default Vue.extend({
     },
     updateItem(e: Event, i: number) {
       const el = e.target as HTMLTextAreaElement;
-      this.moduleInstructions[i] = el.innerText;
+      this.instructions[i] = el.innerText;
       console.log(`instruction ${i} has been updated!`);
     },
     addItem() {
-      this.moduleInstructions.push('');
+      this.instructions.push('');
     },
   },
 });

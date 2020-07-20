@@ -7,7 +7,7 @@
         font-weight-black text-subtitle-2 text-uppercase">
           <span>Instructions</span>
         </div>
-        <div contenteditable @input="updateDesc" class="font-weight-black text-body-1">
+        <div :contenteditable=!readonly @input="updateDesc" class="font-weight-black text-body-1">
           {{moduleDescription}}
         </div>
       </div>
@@ -18,12 +18,13 @@
           font-weight-black text-caption d-none d-sm-flex">
             {{ index+1 }}
           </v-avatar>
-          <div contenteditable @input="updateItem($event, index)"
+          <div :contenteditable=!readonly @input="updateItem($event, index)"
           class="module-instruct__instructions-text font-weight-black text-body-1">
             {{ item }}
           </div>
         </div>
         <div @click="addItem"
+        v-if="!readonly"
         class="module-instruct__instructions-add
         font-weight-black text-body-1">
           <v-icon
@@ -33,7 +34,7 @@
         </div>
       </div>
       <div class="d-flex flex-column">
-        <div class="module-instruct__actions">
+        <div v-if="!readonly" class="module-instruct__actions">
           <div class="module-instruct__actions-cancel text-button">
             <a href="">
               cancel
@@ -54,7 +55,12 @@ import Vue from 'vue';
 
 export default Vue.extend({
   name: 'ModuleInstruct',
-
+  props: {
+    readonly: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data: () => ({
     moduleDescription: "As you practice, use and apply the employer's product or service, log how many minutes you use it each time.",
     moduleInstructions: [

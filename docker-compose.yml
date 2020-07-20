@@ -13,4 +13,4 @@ services:
       - 8080:8080
     stdin_open: true
     tty: true
-    command: "npm run serve"
+    command: "yarn run serve"

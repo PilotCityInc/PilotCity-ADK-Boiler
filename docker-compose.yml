@@ -5,9 +5,11 @@ services:
     working_dir: /usr/src/app
     environment:
       - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
     volumes:
       - ./:/usr/src/app
       - /usr/src/app/node_modules
     ports:
       - 8080:8080
+      
     command: "npm run serve"

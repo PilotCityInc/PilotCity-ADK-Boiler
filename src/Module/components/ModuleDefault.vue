@@ -46,14 +46,16 @@
 <script lang="ts">
 import Vue from 'vue';
 import Instruct from './ModuleInstruct.vue';
+import gql from 'graphql-tag';
 
 export default Vue.extend({
   name: 'ModuleDefault',
   components: {
-    'module-instruct': Instruct,
+  },
+  apollo: {
+
   },
   data: () => ({
-    showInstructions: true,
   }),
 });
 </script>

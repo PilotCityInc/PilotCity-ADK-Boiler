@@ -7,49 +7,14 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import gql from 'graphql-tag';
 
 export default Vue.extend({
   name: 'ModuleEdit',
-
+  apollo: {
+    
+  },
   data: () => ({
-    users: [
-      {
-        name: 'Derick Lee',
-        totalTime: '225', // ? in minutes
-        entries: [
-          {
-            status: 'accepted',
-            time: '60',
-          },
-          {
-            status: 'accepted',
-            time: '45',
-          },
-          {
-            status: 'rejected',
-            time: '120',
-          },
-        ],
-      },
-      {
-        name: 'Prajit Saravanan',
-        totalTime: '720',
-        entries: [
-          {
-            status: 'rejected',
-            time: '120',
-          },
-          {
-            status: 'accepted',
-            time: '120',
-          },
-          {
-            status: 'accepted',
-            time: '120',
-          },
-        ],
-      },
-    ],
   }),
 });
 </script>

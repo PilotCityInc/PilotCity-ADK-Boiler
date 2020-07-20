@@ -29,7 +29,7 @@
               secondary--text text-center">
                 close
               </div>
-              <div class="hr"/>
+              <!-- <div class="hr"/> OPTIONAL -->
               <v-icon class="d-flex secondary--text justify-center">
                 mdi-chevron-up
               </v-icon>
@@ -39,29 +39,6 @@
       </v-expansion-panels>
     </div>
     <div class="module-default__container">
-      <!-- TODO: # validation -->
-      <v-text-field outlined placeholder="##m" class="module-default__input-text">
-        <template v-slot:label>
-          <span class="font-weight-black black--text">Enter Minutes</span>
-        </template>
-      </v-text-field >
-      <v-btn block outlined :ripple="false"
-      class="module-default__input-btn
-      font-weight-black black--text">
-        Log Minutes
-      </v-btn>
-      <span class="module-default__caption
-      text-uppercase font-weight-black text-caption">
-      logged minutes
-      </span>
-      <span class="font-weight-black text-h4 module-default__time">
-        143h 58m
-      </span>
-      <v-btn block outlined :ripple="false"
-      class="module-default__next-btn
-      font-weight-black black--text">
-        Next
-      </v-btn>
     </div>
   </v-container>
 </template>

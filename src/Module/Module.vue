@@ -122,9 +122,12 @@
          <!-- <v-btn class="module__header-text-edit" icon>
             <v-icon color="grey">mdi-lead-pencil</v-icon></v-btn> -->
 
-                    <v-chip-group class="module__header-chips"><v-chip dark small>3 Hours</v-chip>
-                    <v-chip dark small>Deliverable</v-chip>
-                    <v-chip dark small>Activity</v-chip></v-chip-group>
+                    <v-chip-group class="module__header-chips"><v-chip dark small>Stage</v-chip>
+                    <v-chip dark small>Activity or Deliverable</v-chip>
+                    <v-chip dark small>Mandatory</v-chip>
+                    <v-chip dark small>Deadline</v-chip>
+                    <v-chip dark small>Team-based</v-chip>
+                    </v-chip-group>
         </div>
 
       </div>

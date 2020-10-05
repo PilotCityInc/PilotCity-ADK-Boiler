@@ -7,4 +7,32 @@
    width: 100%;
    max-width: 425px;
  }
+
+
+ &__stepper{
+  box-shadow: none !important;
+ }
+
+ &__stepper-step{
+   justify-content: flex-start;
+   align-items: flex-start;
+
+ }
+
+ &__container-grid{
+
+    // margin-top: 50px;
+    // margin-left: 25px;
+    // margin-right: 25px;
+    // margin-bottom: 25px;
+    display: grid;
+    grid-template-columns: repeat(2, 30%);
+    grid-template-rows: repeat(7, 10%);
+    grid-column-gap: 25px;
+    grid-row-gap: 25px;
+    justify-content: center;
+
+ }
+
+
 }

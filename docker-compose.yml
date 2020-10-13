@@ -6,6 +6,7 @@ services:
     environment:
       - NODE_ENV=development
       - CHOKIDAR_USEPOLLING=true
+      - MAX_THREADS=4
     volumes:
       - ./:/usr/src/app
       - /usr/src/app/node_modules
@@ -13,4 +14,4 @@ services:
       - 8080:8080
     stdin_open: true
     tty: true
-    command: "npm run serve"
+    command: sh /usr/src/app/entrypoint.sh

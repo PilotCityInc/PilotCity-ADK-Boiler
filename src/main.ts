@@ -1,13 +1,17 @@
 import Vue from 'vue';
+import provider from '@/vue-apollo';
+import VueApollo from 'vue-apollo';
+
 import App from './App.vue';
 import './registerServiceWorker';
 import vuetify from './plugins/vuetify';
-import { createProvider } from './vue-apollo';
+
+Vue.use(VueApollo);
 
 Vue.config.productionTip = false;
 
 new Vue({
   vuetify,
-  apolloProvider: createProvider(),
-  render: (h) => h(App),
+  apolloProvider: provider,
+  render: h => h(App)
 }).$mount('#app');

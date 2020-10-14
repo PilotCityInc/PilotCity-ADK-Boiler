@@ -1,35 +1,32 @@
 /* eslint-disable @typescript-eslint/camelcase */
-// !TODO: fix type errors :]
-import Vue from 'vue';
 import VueApollo from 'vue-apollo';
-import {
-  createApolloClient, restartWebsockets,
-} from 'vue-cli-plugin-apollo/graphql-client';
+
 //  Allows for using secure endpoint with apollo
 import { setContext } from 'apollo-link-context';
-import { HttpLink, InMemoryCache } from 'apollo-boost';
-// Realm Setup
-// eslint-disable-next-line import/no-unresolved
-import * as RealmWeb from 'realm-web';
+import { ApolloClient } from 'apollo-boost';
 
-// Install the vue plugin
-Vue.use(VueApollo);
+import { createHttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+// Realm Setup
+import * as RealmWeb from 'realm-web';
 
 // Name of the localStorage item
 const AUTH_TOKEN = 'apollo-token';
 
 //  Mongo App Setup
 //  ! Replace with you App ID from Mongo Realm
-export const APP_ID = 'microapp-lokxi';
+export const APP_ID = 'programdev-aogmg';
 
 const app = new RealmWeb.App({
   id: APP_ID,
-  baseUrl: 'https://realm.mongodb.com',
+  baseUrl: 'https://realm.mongodb.com'
 });
+
 const graphql_url = `https://realm.mongodb.com/api/client/v2.0/app/${APP_ID}/graphql`;
 // Http endpoint
-// ! Hide endpoint for production repos. Use .env variables
 const httpEndpoint = process.env.VUE_APP_GRAPHQL_HTTP || graphql_url;
+const httpLink = createHttpLink({ uri: graphql_url });
+
 const authorizationHeaderLink = setContext(async (_, { headers }) => {
   if (app.currentUser) {
     // Refreshing custom data also refreshes the access token
@@ -39,27 +36,16 @@ const authorizationHeaderLink = setContext(async (_, { headers }) => {
     await app.logIn(RealmWeb.Credentials.anonymous());
   }
   // Get a valid access token for the current user
-  const { accessToken } = app.currentUser;
-  if (accessToken) { console.log('I HAVE ACCESS'); }
-  console.log('currentUser', accessToken, app.currentUser);
-
+  const accessToken = app.currentUser?.accessToken;
   // Set the Authorization header, preserving any other headers
   return {
     headers: {
       ...headers,
-      Authorization: `Bearer ${accessToken}`,
-    },
+      Authorization: `Bearer ${accessToken}`
+    }
   };
 });
-// Construct a new Apollo HttpLink that connects to your app's GraphQL endpoint
 
-const httpLink = new HttpLink({ uri: graphql_url });
-// Files URL root
-export const filesRoot = process.env.VUE_APP_FILES_ROOT || httpEndpoint.substr(0, httpEndpoint.indexOf('/graphql'));
-
-Vue.prototype.$filesRoot = filesRoot;
-
-// Config
 const defaultOptions = {
   // You can use `https` for secure connection (recommended in production)
   httpEndpoint,
@@ -82,7 +68,7 @@ const defaultOptions = {
   link: authorizationHeaderLink.concat(httpLink),
 
   // Override default cache
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache()
 
   // Override the way the Authorization header is set
   // getAuth: (tokenName) => ...
@@ -94,38 +80,15 @@ const defaultOptions = {
   // clientState: { resolvers: { ... }, defaults: { ... } }
 };
 
-// Call this in the Vue app file
-export function createProvider(options = {}) {
-  // Create apollo client
-  const { apolloClient, wsClient } = createApolloClient({
-    ...defaultOptions,
-    ...options,
-  });
-  apolloClient.wsClient = wsClient;
-
-  // Create vue apollo provider
-  const apolloProvider = new VueApollo({
-    defaultClient: apolloClient,
-    defaultOptions: {
-      $query: {
-        fetchPolicy: 'cache-and-network',
-      },
-    },
-    errorHandler(error) {
-      // eslint-disable-next-line no-console
-      console.log('%cError', 'background: red; color: white; padding: 2px 4px; border-radius: 3px; font-weight: bold;', error.message);
-    },
-  });
-
-  return apolloProvider;
-}
-
+const apolloClient = new ApolloClient({
+  ...defaultOptions,
+  connectToDevTools: process.env.NODE_ENV === 'development'
+});
 // Manually call this when user log in
-export async function onLogin(apolloClient, token) {
+export async function onLogin(token: string) {
   if (typeof localStorage !== 'undefined' && token) {
     localStorage.setItem(AUTH_TOKEN, token);
   }
-  if (apolloClient.wsClient) restartWebsockets(apolloClient.wsClient);
   try {
     await apolloClient.resetStore();
   } catch (e) {
@@ -135,11 +98,10 @@ export async function onLogin(apolloClient, token) {
 }
 
 // Manually call this when user log out
-export async function onLogout(apolloClient) {
+export async function onLogout() {
   if (typeof localStorage !== 'undefined') {
     localStorage.removeItem(AUTH_TOKEN);
   }
-  if (apolloClient.wsClient) restartWebsockets(apolloClient.wsClient);
   try {
     await apolloClient.resetStore();
   } catch (e) {
@@ -147,3 +109,7 @@ export async function onLogout(apolloClient) {
     console.log('%cError on cache reset (logout)', 'color: orange;', e.message);
   }
 }
+const provider = new VueApollo({
+  defaultClient: apolloClient
+});
+export default provider;

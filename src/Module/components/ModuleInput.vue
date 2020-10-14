@@ -1,7 +1,5 @@
 <template>
-<div class="module-input">
-
-</div>
+  <div class="module-input"></div>
 </template>
 
 <script lang="ts">
@@ -12,6 +10,6 @@ export default Vue.extend({
 
   data: () => ({
     //
-  }),
+  })
 });
 </script>

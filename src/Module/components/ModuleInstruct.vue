@@ -1,47 +1,56 @@
 <template>
-<!--  TODO: make the inputs into actual components -->
+  <!--  TODO: make the inputs into actual components -->
   <v-container class="module-instruct">
     <div class="module-instruct__container">
       <div class="module-instruct__description">
-        <div class="module-instruct__description-label
-        font-weight-black text-subtitle-2 text-uppercase">
+        <div
+          class="module-instruct__description-label font-weight-black text-subtitle-2 text-uppercase"
+        >
           <span>Instructions</span>
         </div>
-        <div :contenteditable=!readonly @input="updateDesc" class="font-weight-black text-body-1">
-          {{moduleDescription}}
+        <div :contenteditable="!readonly" class="font-weight-black text-body-1" @input="updateDesc">
+          {{ moduleDescription }}
         </div>
       </div>
       <div class="module-instruct__instructions">
-        <div class="module-instruct__instructions-item"
-        v-for="(item, index) in instructions" :key="item">
-          <v-avatar size="35" class="module-instruct__instructions-av
-          font-weight-black text-caption d-none d-sm-flex">
-            {{ index+1 }}
+        <div
+          v-for="(item, index) in instructions"
+          :key="item"
+          class="module-instruct__instructions-item"
+        >
+          <v-avatar
+            size="35"
+            class="module-instruct__instructions-av font-weight-black text-caption d-none d-sm-flex"
+          >
+            {{ index + 1 }}
           </v-avatar>
-          <div :contenteditable=!readonly @input="updateItem($event, index)"
-          class="module-instruct__instructions-text font-weight-black text-body-1">
+          <div
+            :contenteditable="!readonly"
+            class="module-instruct__instructions-text font-weight-black text-body-1"
+            @input="updateItem($event, index)"
+          >
             {{ item }}
           </div>
         </div>
-        <div @click="addItem"
-        v-if="!readonly"
-        class="module-instruct__instructions-add
-        font-weight-black text-body-1">
-          <v-icon
-          class="module-instruct__instructions-add-icon">
-            mdi-plus
-          </v-icon>
+        <div
+          v-if="!readonly"
+          class="module-instruct__instructions-add font-weight-black text-body-1"
+          @click="addItem"
+        >
+          <v-icon class="module-instruct__instructions-add-icon"> mdi-plus </v-icon>
         </div>
       </div>
       <div class="d-flex flex-column">
         <div v-if="!readonly" class="module-instruct__actions">
           <div class="module-instruct__actions-cancel text-button">
-            <span href="">
-              cancel
-            </span>
+            <span href=""> cancel </span>
           </div>
-          <v-btn :ripple="false" height="40" outlined
-          class="active module-instruct__actions-save elevation-0">
+          <v-btn
+            :ripple="false"
+            height="40"
+            outlined
+            class="active module-instruct__actions-save elevation-0"
+          >
             Save
           </v-btn>
         </div>
@@ -59,23 +68,26 @@ export default Vue.extend({
   props: {
     readonly: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   apollo: {
-    instructions: gql`query instructQuery{
-      mApracticelogOpt{
-        instructions
+    instructions: gql`
+      query instructQuery {
+        mApracticelogOpt {
+          instructions
+        }
       }
-    }`,
+    `
   },
   data: () => ({
-    moduleDescription: "As you practice, use and apply the employer's product or service, log how many minutes you use it each time.",
+    moduleDescription:
+      "As you practice, use and apply the employer's product or service, log how many minutes you use it each time.",
     instructions: [
       'Enter number of minutes to log and add “m” at end',
       'Click on “Log” button to enter the minutes practiced',
-      'View total logged minutes',
-    ], // TODO: parse for empty string (strings w/o _real_ characters)
+      'View total logged minutes'
+    ] // TODO: parse for empty string (strings w/o _real_ characters)
   }),
   methods: {
     updateDesc(e: Event) {
@@ -90,7 +102,7 @@ export default Vue.extend({
     },
     addItem() {
       this.instructions.push('');
-    },
-  },
+    }
+  }
 });
 </script>

@@ -1,5 +1,5 @@
 <template>
-<div class="module-output"></div>
+  <div class="module-output"></div>
 </template>
 
 <script lang="ts">
@@ -10,6 +10,6 @@ export default Vue.extend({
 
   data: () => ({
     //
-  }),
+  })
 });
 </script>

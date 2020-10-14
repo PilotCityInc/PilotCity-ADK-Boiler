@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-main>
-      <Module/>
+      <Module />
     </v-main>
   </v-app>
 </template>
@@ -15,19 +15,20 @@ export default Vue.extend({
   name: 'App',
 
   components: {
-    Module,
+    Module
   },
 
   data: () => ({
     //
-  }),
+  })
 });
 </script>
 <style lang="scss">
-  html, body{
-    font-family: "Raleway";
-    font-size: 16px;
-    width: 100%;
-    height: 100%;
-  }
+html,
+body {
+  font-family: 'Raleway';
+  font-size: 16px;
+  width: 100%;
+  height: 100%;
+}
 </style>

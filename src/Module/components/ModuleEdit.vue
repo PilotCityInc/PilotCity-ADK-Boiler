@@ -1,8 +1,7 @@
 <template>
-<v-container class="module-edit">
-  <div class="module-edit__container">
-  </div>
-</v-container>
+  <v-container class="module-edit">
+    <div class="module-edit__container"></div>
+  </v-container>
 </template>
 
 <script lang="ts">
@@ -11,9 +10,7 @@ import Vue from 'vue';
 
 export default Vue.extend({
   name: 'ModuleEdit',
-  apollo: {
-  },
-  data: () => ({
-  }),
+  apollo: {},
+  data: () => ({})
 });
 </script>

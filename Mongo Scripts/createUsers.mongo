@@ -1,3 +1,0 @@
-db.users.insertOne({
-    name:"derick lee",
-})

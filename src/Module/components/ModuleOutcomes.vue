@@ -1,7 +1,6 @@
 <template>
   <v-container class="module-outcomes">
-    <div class="module-outcomes__container">
-    </div>
+    <div class="module-outcomes__container"></div>
   </v-container>
 </template>
 
@@ -11,9 +10,7 @@ import Vue from 'vue';
 
 export default Vue.extend({
   name: 'ModuleOutcomes',
-  apollo: {
-  },
-  data: () => ({
-  }),
+  apollo: {},
+  data: () => ({})
 });
 </script>

@@ -1,5 +1,5 @@
 <template>
-<!--  TODO: make the inputs into actual components -->
+  <!--  TODO: make the inputs into actual components -->
   <v-container class="module">
     <div class="module__navbar">
             <v-btn dark class="module__navbar-button"
@@ -140,22 +140,23 @@
       stream
     ></v-progress-linear>
         <div class="module__pagination">
-          <div
-          :class="{'active': currentPage==page}"
-          v-for="page in pages" :key="page">
-            <div class="module__pagination-button--active"/>
+          <div v-for="page in pages" :key="page" :class="{ active: currentPage == page }">
+            <div class="module__pagination-button--active" />
             <v-btn
-            :ripple="false"
-            class="module__pagination-button elevation-0"
-            color="transparent" height="40" small
-            @click="currentPage=page">
+              :ripple="false"
+              class="module__pagination-button elevation-0"
+              color="transparent"
+              height="40"
+              small
+              @click="currentPage = page"
+            >
               {{ page }}
             </v-btn>
           </div>
         </div>
         <div class="module__page">
           <keep-alive>
-            <component :is="getComponent"/>
+            <component :is="getComponent" />
           </keep-alive>
         </div>
       </div>
@@ -193,7 +194,7 @@ export default Vue.extend({
   computed: {
     getComponent() {
       return `module-${this.currentPage.toLowerCase()}`;
-    },
-  },
+    }
+  }
 });
 </script>

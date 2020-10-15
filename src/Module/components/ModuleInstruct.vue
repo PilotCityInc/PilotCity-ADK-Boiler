@@ -15,14 +15,14 @@
           Press the button to clear the input field
         </v-stepper-step>
       </v-stepper> -->
-<div class="module-instruct__container-grid">
-<div>X</div>
-<div>X</div>
-<div>X</div>
-<div>X</div>
-<div>X</div>
-<div>X</div>
-</div>
+      <div class="module-instruct__container-grid">
+        <div>X</div>
+        <div>X</div>
+        <div>X</div>
+        <div>X</div>
+        <div>X</div>
+        <div>X</div>
+      </div>
     </div>
   </v-container>
 </template>

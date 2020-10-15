@@ -1,12 +1,11 @@
 import Vue from 'vue';
 import VueCompositionApi from '@vue/composition-api';
-import App from './App.vue';
 import './registerServiceWorker';
-import vuetify from './plugins/vuetify';
 import { ValidationObserver, ValidationProvider } from '@/validation';
 import provider from '@/vue-apollo';
 import VueApollo from 'vue-apollo';
-import './registerServiceWorker';
+import App from './App.vue';
+import vuetify from './plugins/vuetify';
 
 Vue.use(VueApollo);
 

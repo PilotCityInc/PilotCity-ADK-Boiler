@@ -2,42 +2,38 @@
   <!--  TODO: make the inputs into actual components -->
   <v-container class="module">
     <div class="module__navbar">
-            <v-btn dark class="module__navbar-button"
-      small depressed color="grey lighten-1" rounded>00:00:00</v-btn>
-      <v-btn class="module__navbar-button"
-      outlined x-small depressed color="grey lighten-1">Preview</v-btn>
-    <v-menu
-    left
-      v-model="menu"
-      :close-on-content-click="false"
-      offset-y
-    >
-      <template v-slot:activator="{ on, attrs }">
-      <v-btn
-                v-bind="attrs"
-          v-on="on" small icon class="module__navbar-button">
-      <v-icon color="grey lighten-1">mdi-cog</v-icon></v-btn>
-      </template>
-      <v-card>
+      <v-btn dark class="module__navbar-button" small depressed color="grey lighten-1" rounded
+        >00:00:00</v-btn
+      >
+      <v-btn class="module__navbar-button" outlined x-small depressed color="grey lighten-1"
+        >Preview</v-btn
+      >
+      <v-menu v-model="menu" left :close-on-content-click="false" offset-y>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn v-bind="attrs" small icon class="module__navbar-button" v-on="on">
+            <v-icon color="grey lighten-1">mdi-cog</v-icon></v-btn
+          >
+        </template>
+        <v-card>
           <v-btn color="white" class="module__settings-menu" tile depressed>
-            <v-icon left color="#404142">mdi-arrow-horizontal-lock
-            </v-icon>Lock</v-btn>
+            <v-icon left color="#404142">mdi-arrow-horizontal-lock </v-icon>Lock</v-btn
+          >
           <v-divider></v-divider>
-                    <v-btn color="white" class="module__settings-menu"  tile depressed>
-                      <v-icon left color="#ea6764">mdi-trash-can-outline
-            </v-icon>Delete</v-btn>
+          <v-btn color="white" class="module__settings-menu" tile depressed>
+            <v-icon left color="#ea6764">mdi-trash-can-outline </v-icon>Delete</v-btn
+          >
           <v-divider></v-divider>
           <v-color-picker
-  disabled
-  dot-size="25"
-  hide-canvas
-  hide-inputs
-  hide-mode-switch
-  show-swatches
-  :swatches="pilotcityColors"
-  swatches-max-height="100"
-></v-color-picker>
-        <!-- <v-list>
+            disabled
+            dot-size="25"
+            hide-canvas
+            hide-inputs
+            hide-mode-switch
+            show-swatches
+            :swatches="pilotcityColors"
+            swatches-max-height="100"
+          ></v-color-picker>
+          <!-- <v-list>
           <v-list-item>
             <v-list-item-avatar>
               <img
@@ -86,7 +82,7 @@
             <v-list-item-title>Enable hints</v-list-item-title>
           </v-list-item>
         </v-list> -->
-        <!-- <v-card-actions>
+          <!-- <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
             color="grey lighten-1"
@@ -102,11 +98,10 @@
             Save
           </v-btn>
         </v-card-actions> -->
-      </v-card>
-    </v-menu>
+        </v-card>
+      </v-menu>
     </div>
     <div class="module__container">
-
       <div class="module__title">
         <div class="module__image rounded-circle">
           <!-- <v-img
@@ -114,31 +109,31 @@
           max-width="93px"
           src="mdi-cog">
           </v-img> -->
-<v-icon light x-large color="#3c9dcd">mdi-cog</v-icon>
+          <v-icon light x-large color="#3c9dcd">mdi-cog</v-icon>
         </div>
 
         <div class="module__header text-md-h5 text-sm-subtitle-1 d-flex align-center">
-          <input :value="moduleName" type="text" class="module__header-text" >
-         <!-- <v-btn class="module__header-text-edit" icon>
+          <input :value="moduleName" type="text" class="module__header-text" />
+          <!-- <v-btn class="module__header-text-edit" icon>
             <v-icon color="grey">mdi-lead-pencil</v-icon></v-btn> -->
 
-                    <v-chip-group class="module__header-chips"><v-chip dark small>Stage</v-chip>
-                    <v-chip dark small>Activity or Deliverable</v-chip>
-                    <v-chip dark small>Mandatory</v-chip>
-                    <v-chip dark small>Deadline</v-chip>
-                    <v-chip dark small>Team-based</v-chip>
-                    </v-chip-group>
+          <v-chip-group class="module__header-chips"
+            ><v-chip dark small>Stage</v-chip>
+            <v-chip dark small>Activity or Deliverable</v-chip>
+            <v-chip dark small>Mandatory</v-chip>
+            <v-chip dark small>Deadline</v-chip>
+            <v-chip dark small>Team-based</v-chip>
+          </v-chip-group>
         </div>
-
       </div>
       <div class="module__body">
-            <v-progress-linear
-      color="#3c9dcd"
-      height="2"
-      value="75"
-      buffer-value="95"
-      stream
-    ></v-progress-linear>
+        <v-progress-linear
+          color="#3c9dcd"
+          height="2"
+          value="75"
+          buffer-value="95"
+          stream
+        ></v-progress-linear>
         <div class="module__pagination">
           <div v-for="page in pages" :key="page" :class="{ active: currentPage == page }">
             <div class="module__pagination-button--active" />
@@ -175,7 +170,7 @@ export default Vue.extend({
     'module-metrics': Module.Monitor,
     'module-edit': Module.Setup,
     'module-outcomes': Module.Presets,
-    'module-preview': Module.Default,
+    'module-preview': Module.Default
   },
   data: () => ({
     moduleName: 'Practice Log',
@@ -188,8 +183,8 @@ export default Vue.extend({
     pilotcityColors: [
       ['#6eba80', '#3c9dcd', '#ea6764'],
       ['#eda1bf', '#fec34b', '#dedede'],
-      ['#ae90b0', '#f79961', '#000000'],
-    ],
+      ['#ae90b0', '#f79961', '#000000']
+    ]
   }),
   computed: {
     getComponent() {

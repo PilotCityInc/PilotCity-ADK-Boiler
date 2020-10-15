@@ -12,13 +12,9 @@
             <template v-slot="{ open }">
               <v-scroll-y-transition hide-on-leave>
                 <div v-if="!open" class="d-flex flex-column justify-center">
-                  <v-icon class="d-flex justify-center secondary--text">
-                    mdi-chevron-down
-                  </v-icon>
+                  <v-icon class="d-flex justify-center secondary--text"> mdi-chevron-down </v-icon>
                   <div
-                    class="text-uppercase
-                  font-weight-bold text-subtitle-2
-                  secondary--text text-center"
+                    class="text-uppercase font-weight-bold text-subtitle-2 secondary--text text-center"
                   >
                     Instructions
                   </div>
@@ -30,16 +26,12 @@
             <module-instruct readonly />
             <div @click="showInstructions = true">
               <div
-                class="text-uppercase
-              font-weight-bold text-subtitle-2
-              secondary--text text-center"
+                class="text-uppercase font-weight-bold text-subtitle-2 secondary--text text-center"
               >
                 close
               </div>
               <!-- <div class="hr"/> OPTIONAL -->
-              <v-icon class="d-flex secondary--text justify-center">
-                mdi-chevron-up
-              </v-icon>
+              <v-icon class="d-flex secondary--text justify-center"> mdi-chevron-up </v-icon>
             </div>
           </v-expansion-panel-content>
         </v-expansion-panel>

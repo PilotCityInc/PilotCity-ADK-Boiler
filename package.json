@@ -24,6 +24,7 @@
     "realm-web": "^0.7.0",
     "register-service-worker": "^1.7.1",
     "roboto-fontface": "*",
+    "vee-validate": "^3.4.1",
     "vue": "^2.6.12",
     "vue-apollo": "^3.0.4y",
     "vuetify": "^2.3.14"

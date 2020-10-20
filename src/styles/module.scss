@@ -19,7 +19,7 @@
     min-width: 308px;
     width: 100%;
     max-width: 700px;
-    border: 10px solid #3c9dcd;
+    border: 10px solid #bdbdbd;
     display: flex;
     flex-direction: column;
   }
@@ -124,11 +124,7 @@ margin:5px;
     }
   }
 }
-.module{ //! bottom part of conatiner
-
-
-
-
+.module{ 
  &__body{
    
  }
@@ -137,7 +133,7 @@ margin:5px;
    justify-content: center;
    margin-bottom: 38px;
    display: grid;
-   grid-template-columns: repeat(4, 1fr);
+   grid-template-columns: repeat(3, 1fr);
    grid-template-rows: 1fr;
    & > div.active{
      & .module__pagination-button{

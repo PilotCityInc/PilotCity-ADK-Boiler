@@ -9,7 +9,7 @@ import Vue from 'vue';
 // import gql from 'graphql-tag';
 
 export default Vue.extend({
-  name: 'ModuleOutcomes',
+  name: 'ModulePresets',
   apollo: {},
   data: () => ({})
 });

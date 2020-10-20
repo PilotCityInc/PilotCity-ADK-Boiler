@@ -10,13 +10,19 @@ export default new Vuetify({
     },
     themes: {
       light: {
-        primary: '#ee44aa',
-        secondary: '#424242',
-        accent: '#82B1FF',
-        error: '#FF5252',
-        info: '#2196F3',
-        success: '#4CAF50',
-        warning: '#FFC107'
+        primary: '#4F4F4F', // primary
+        secondary: '#FFFFFF', // white
+        accent: '#BDBDBD', // grey
+        error: '#EA6763', // red
+        info: '#3C9CCC', // blue
+        success: '#6EBA7F', // green
+        warning: '#FDD35A', // yellow
+        pink: '#E49AB3', // pink
+        purple: '#AE90B0', // purple
+        red: '#EA6763', // red
+        blue: '#3C9CCC', // blue
+        green: '#6EBA7F', // green
+        yellow: '#FDD35A' // yellow
       }
     }
   }

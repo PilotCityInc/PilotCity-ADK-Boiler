@@ -5,7 +5,10 @@
       <div class="presets__section-title">Activity Presets</div>
       <div class="presets__nopresets">No presets available to tweak</div>
       <v-divider class="presets__divider"></v-divider>
-      <div class="presets__section-title">Creator Defaults</div>
+      <div class="presets__section-title">Instruction Presets</div>
+      <Instruct v-model="setupInstructions" />
+      <v-divider class="presets__divider"></v-divider>
+      <div class="presets__section-title">Creator Presets</div>
       <v-select :items="group" label="What activity group does this belong to?" outlined></v-select>
       <v-select
         :items="required"
@@ -59,9 +62,13 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import Instruct from './ModuleInstruct.vue';
 // import gql from 'graphql-tag';
 export default Vue.extend({
   name: 'ModulePresets',
+  components: {
+    Instruct
+  },
   apollo: {},
   data: () => ({
     group: ['Setup', 'Project', 'Screening', 'Internship'],

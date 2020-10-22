@@ -57,3 +57,12 @@ export default Vue.extend({
   })
 });
 </script>
+
+<style lang="scss">
+.module-default {
+  &__employer-title {
+    font-size: 25px;
+    font-weight: 700;
+  }
+}
+</style>

@@ -46,7 +46,7 @@
     <div class="module__container" :style="{ 'border-color': getColor }">
       <div class="module__title">
         <div class="module__image rounded-circle">
-          <v-icon light x-large :color="selectedColor">mdi-cog</v-icon>
+          <v-icon light x-large :color="selectedColor">mdi-newspaper-variant-outline</v-icon>
         </div>
         <div class="module__header text-md-h5 text-sm-subtitle-1 d-flex align-center">
           <input :value="moduleName" type="text" class="module__header-text" />
@@ -60,7 +60,7 @@
         </div>
       </div>
       <div class="module__body">
-        <v-progress-linear color="#3c9dcd" height="2" value="75" buffer-value="95" stream />
+        <v-progress-linear color="#dedede" height="2" value="75" buffer-value="95" stream />
         <div class="module__pagination">
           <div v-for="page in subpages" :key="page" :class="{ active: currentPage == page }">
             <div class="module__pagination-button--active" />
@@ -119,7 +119,7 @@ export default {
     'module-default': Module.Default
   },
   setup() {
-    const moduleName = ref('Module Name');
+    const moduleName = ref('Request for Projects');
     const page: Page = reactive({
       subpages: ['Setup', 'Presets', 'Monitor'],
       currentPage: 'Setup',
@@ -134,7 +134,7 @@ export default {
         ['#eda1bf', '#fec34b', '#bdbdbd'],
         ['#ae90b0', '#f79961', '#000000']
       ],
-      selectedColor: '#bdbdbd',
+      selectedColor: '#3c9dcd',
       getColor: computed(() => {
         return color.selectedColor.substring(0, 7);
       })

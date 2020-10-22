@@ -32,7 +32,6 @@
         label="Enter employer biography"
         placeholder="In a paragraph or less, describe your organization"
       ></v-textarea>
-      <v-btn x-large depressed outlined>Finish</v-btn>
     </div>
   </v-container>
 </template>

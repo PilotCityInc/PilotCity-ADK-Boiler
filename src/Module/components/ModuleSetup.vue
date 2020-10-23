@@ -1,6 +1,8 @@
 <template>
   <v-container class="module-edit">
     <div class="module-edit__container">
+      <!-- <v-divider class="presets__divider"></v-divider> -->
+      <div class="presets__section-title">Enter Info</div>
       <v-text-field
         label="Employer Name"
         value="Kaiser Permanente National Innovation"
@@ -12,26 +14,38 @@
         value=""
         outlined
       ></v-text-field>
+      <v-divider class="presets__divider"></v-divider>
+      <div class="presets__section-title">Develop Content</div>
       <div class="module-setup__buildscope">
         <!-- INSERT V-DIALOG HERE TO OPEN UP PROMPT BUILDER WE BUILT LAST YEAR FOR TEACHERS -->
-        <v-btn depressed outlined x-small>Build & Import Scope</v-btn>
+        <v-btn depressed outlined x-small>Build Scope Now</v-btn>
       </div>
       <v-textarea
         outlined
         label="What is the project scope?"
         placeholder="In a tweet or less, describe your scope of the project mission"
       ></v-textarea>
+      <div class="module-setup__buildscope">
+        <!-- INSERT V-DIALOG HERE TO OPEN UP PROMPT BUILDER WE BUILT LAST YEAR FOR TEACHERS -->
+        <v-btn depressed outlined x-small>Make Video Now</v-btn>
+      </div>
       <v-text-field
         outlined
         label="Enter Introduction Video (YouTube URL Link)"
         placeholder="https://www.youtube.com/linkextension"
         prepend-inner-icon="mdi-youtube"
       ></v-text-field>
+      <div class="module-setup__buildscope">
+        <!-- INSERT V-DIALOG HERE TO OPEN UP PROMPT BUILDER WE BUILT LAST YEAR FOR TEACHERS -->
+        <v-btn depressed outlined x-small>Get From LinkedIn</v-btn>
+      </div>
       <v-textarea
         outlined
         label="About your organization"
         placeholder="In a paragraph or less, describe your organization"
       ></v-textarea>
+      <v-divider class="presets__divider"></v-divider>
+      <div class="presets__section-title">Select Specifications</div>
       <v-select
         v-model="outcomesValue"
         :items="outcomes"
@@ -40,6 +54,10 @@
         multiple
         outlined
       ></v-select>
+      <div class="module-setup__buildscope">
+        <!-- INSERT V-DIALOG HERE TO OPEN UP PROMPT BUILDER WE BUILT LAST YEAR FOR TEACHERS -->
+        <v-btn depressed outlined disabled x-small>Connected with activities</v-btn>
+      </div>
       <v-select
         v-model="deliverablesValue"
         :items="deliverables"
@@ -74,6 +92,16 @@
         </v-combobox>
       </template>
 
+      <v-divider class="presets__divider"></v-divider>
+      <div class="presets__section-title">Provide Resources</div>
+
+      <v-text-field
+        outlined
+        label="Website"
+        placeholder="https://www.employername.com/"
+        prepend-inner-icon="mdi-search-web"
+      ></v-text-field>
+
       <v-text-field
         outlined
         label="Instagram"
@@ -97,10 +125,20 @@
 
       <v-text-field
         outlined
+        label="YouTube"
+        placeholder="https://www.youtube.com/username"
+        prepend-inner-icon="mdi-youtube"
+      ></v-text-field>
+
+      <v-text-field
+        outlined
         label="Get Started Folder"
         placeholder="https://drive.google.com/foldername"
         prepend-inner-icon="mdi-folder-google-drive"
       ></v-text-field>
+
+      <v-divider class="presets__divider"></v-divider>
+      <div class="presets__section-title">Self-Interview</div>
 
       <v-textarea
         outlined
@@ -172,14 +210,14 @@ export default {
     ],
     chips: ['Must use employer product'],
     items: ['Must use employer product', 'Must use employer service', 'Must use employer process']
-  }),
+  })
 
-  methods: {
-    remove(item) {
-      this.chips.splice(this.chips.indexOf(item), 1);
-      this.chips = [...this.chips];
-    }
-  }
+  // methods: {
+  //   remove(item) {
+  //     this.chips.splice(this.chips.indexOf(item), 1);
+  //     this.chips = [...this.chips];
+  //   }
+  // }
 };
 </script>
 

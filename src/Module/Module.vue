@@ -86,6 +86,9 @@
   </v-container>
 </template>
 <style lang="scss">
+.module {
+  // background-color: #404142;
+}
 .module__menu {
   .v-color-picker {
     &__controls {
@@ -119,7 +122,7 @@ export default {
     'module-default': Module.Default
   },
   setup() {
-    const moduleName = ref('Request for Projects');
+    const moduleName = ref('Request for Interns');
     const page: Page = reactive({
       subpages: ['Setup', 'Presets', 'Monitor'],
       currentPage: 'Setup',

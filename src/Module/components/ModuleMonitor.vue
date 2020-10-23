@@ -39,7 +39,7 @@
                     with
                     <span class="module-default__faq-answer-dark-highlight"
                       >Kaiser Permanente National Innovation</span
-                    >. Below are some answers to some key questions.
+                    >. Below are my answers to some key questions.
                   </div></v-card-text
                 >
               </v-card>
@@ -167,7 +167,9 @@
         <v-card outlined elevation="0" max-width="85%" class="mx-auto">
           <v-toolbar elevation="0" dark color="blue">
             <v-icon class="mr-4" large>mdi-telegram</v-icon>
-            <v-toolbar-title>Project Specifications</v-toolbar-title>
+            <v-toolbar-title class="module-default__specs-title"
+              >Project Specifications</v-toolbar-title
+            >
           </v-toolbar>
           <v-subheader>Outcomes</v-subheader>
           <v-list two-line subheader>
@@ -236,6 +238,7 @@
                 <v-btn class="ma-1" depressed small outlined>Instagram</v-btn>
                 <v-btn class="ma-1" depressed small outlined>LinkedIn</v-btn>
                 <v-btn class="ma-1" depressed small outlined>Facebook</v-btn>
+                <v-btn class="ma-1" depressed small outlined>YouTube</v-btn>
                 <!-- <v-btn class="ma-1" depressed small outlined>Articles</v-btn>
                 <v-btn class="ma-1" depressed small outlined>Product Specifications</v-btn>
                 <v-btn class="ma-1" depressed small outlined>Reports</v-btn> -->
@@ -310,8 +313,8 @@ export default Vue.extend({
 }
 .module-default {
   &__scope {
-    font-size: 24px;
-    font-weight: 700;
+    font-size: 22px;
+    font-weight: 800;
     text-align: center;
     max-width: 95%;
     margin: auto;
@@ -396,6 +399,10 @@ export default Vue.extend({
     font-weight: 800;
     letter-spacing: 0px;
     color: #404142;
+  }
+
+  &__specs-title {
+    font-weight: 800;
   }
 }
 </style>

@@ -61,35 +61,46 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import { reactive, ref, toRefs } from '@vue/composition-api';
 import Instruct from './ModuleInstruct.vue';
 // import gql from 'graphql-tag';
-export default Vue.extend({
+
+export default {
   name: 'ModulePresets',
   components: {
     Instruct
   },
   apollo: {},
-  data: () => ({
-    group: ['Setup', 'Project', 'Screening', 'Internship'],
-    required: ['Creator requires this activity', 'Yes', 'No'],
-    lockOrder: ['Creator locked activity group and placement order', 'Yes', 'No'],
-    deliverable: ['Yes', 'No'],
-    notifications: ['Creator turned on by default', 'Turn on', 'Turn off'],
-    accessibility: [
-      'Creator has turned off accessibility anytime',
-      'Creator has turned on accessibility anytime',
-      'Yes',
-      'No'
-    ],
-    endEarly: [
-      'Creator has not allowed participants to end early after this activity',
-      'Creator has allow end early option only at preset order placement',
-      'Yes',
-      'No'
-    ]
-  })
-});
+  setup() {
+    const presets = reactive({
+      group: ['Setup', 'Project', 'Screening', 'Internship'],
+      required: ['Creator requires this activity', 'Yes', 'No'],
+      lockOrder: ['Creator locked activity group and placement order', 'Yes', 'No'],
+      deliverable: ['Yes', 'No'],
+      notifications: ['Creator turned on by default', 'Turn on', 'Turn off'],
+      accessibility: [
+        'Creator has turned off accessibility anytime',
+        'Creator has turned on accessibility anytime',
+        'Yes',
+        'No'
+      ],
+      endEarly: [
+        'Creator has not allowed participants to end early after this activity',
+        'Creator has allow end early option only at preset order placement',
+        'Yes',
+        'No'
+      ]
+    });
+    const setupInstructions = ref({
+      description: '',
+      instructions: ['', '', '']
+    });
+    return {
+      ...toRefs(presets),
+      setupInstructions
+    };
+  }
+};
 </script>
 
 <style lang="scss">

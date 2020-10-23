@@ -113,16 +113,27 @@ interface Color {
   selectedColor: string;
   getColor: string;
 }
+interface Config {
+  description: string;
+  instruct: string[];
+  deletable: boolean;
+  group: string[];
+  deliverable: boolean;
+  notifications: string;
+  reflection: string[];
+  access: string;
+}
 export default {
-  name: 'Microapp',
+  name: 'ModuleName',
   components: {
     'module-monitor': Module.Monitor,
     'module-setup': Module.Setup,
     'module-presets': Module.Presets,
-    'module-default': Module.Default
+    'module-preview': Module.Default
   },
   setup() {
     const moduleName = ref('Request for Interns');
+    console.log(this); // maybe we can use exported `name:` property
     const page: Page = reactive({
       subpages: ['Setup', 'Presets', 'Monitor'],
       currentPage: 'Setup',
@@ -142,10 +153,15 @@ export default {
         return color.selectedColor.substring(0, 7);
       })
     });
+    const config = ref({
+      description: '',
+      instruct: ['']
+    });
     const menu = ref(false);
     return {
       ...toRefs(color as any),
       ...toRefs(page as any),
+      config,
       moduleName,
       menu
     };

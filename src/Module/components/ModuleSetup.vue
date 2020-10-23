@@ -178,46 +178,39 @@
 </template>
 
 <script lang="ts">
-import { ref } from '@vue/composition-api';
+import { reactive, ref, toRefs } from '@vue/composition-api';
 // import gql from 'graphql-tag';
 
 export default {
-  name: 'ModuleEdit',
-  setup() {
-    const setupInstructions = ref(['']);
-    return {
-      setupInstructions
-    };
-  },
-  data: () => ({
-    outcomes: ['Build portfolio project', 'Qualify for internship to execute on project'],
-    outcomesValue: ['Build portfolio project', 'Qualify for internship to execute on project'],
-    deliverables: [
-      'Business Model Canvas',
-      'One Sentence Pitch',
-      'Elevator Pitch',
-      'Design & Prototype Log',
-      'Prototype Demo',
-      'Presentation Deck'
-    ],
-    deliverablesValue: [
-      'Business Model Canvas',
-      'One Sentence Pitch',
-      'Elevator Pitch',
-      'Design & Prototype Log',
-      'Prototype Demo',
-      'Presentation Deck'
-    ],
-    chips: ['Must use employer product'],
-    items: ['Must use employer product', 'Must use employer service', 'Must use employer process']
-  })
+  name: 'ModuleSetup',
 
-  // methods: {
-  //   remove(item) {
-  //     this.chips.splice(this.chips.indexOf(item), 1);
-  //     this.chips = [...this.chips];
-  //   }
-  // }
+  setup() {
+    const setup = reactive({
+      outcomes: ['Build portfolio project', 'Qualify for internship to execute on project'],
+      outcomesValue: ['Build portfolio project', 'Qualify for internship to execute on project'],
+      deliverables: [
+        'Business Model Canvas',
+        'One Sentence Pitch',
+        'Elevator Pitch',
+        'Design & Prototype Log',
+        'Prototype Demo',
+        'Presentation Deck'
+      ],
+      deliverablesValue: [
+        'Business Model Canvas',
+        'One Sentence Pitch',
+        'Elevator Pitch',
+        'Design & Prototype Log',
+        'Prototype Demo',
+        'Presentation Deck'
+      ],
+      chips: ['Must use employer product'],
+      items: ['Must use employer product', 'Must use employer service', 'Must use employer process']
+    });
+    return {
+      ...toRefs(setup)
+    };
+  }
 };
 </script>
 

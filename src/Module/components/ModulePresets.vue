@@ -3,7 +3,7 @@
     <div class="module-outcomes__container">
       <!-- <v-divider class="presets__divider"></v-divider> -->
       <div class="presets__section-title">Activity Presets</div>
-      <div class="presets__nopresets">No presets available to tweak</div>
+      <div class="presets__nopresets">No tweaking necessary</div>
       <v-divider class="presets__divider"></v-divider>
       <div class="presets__section-title">Instruction Presets</div>
       <Instruct v-model="setupInstructions" />

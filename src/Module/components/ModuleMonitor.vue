@@ -132,7 +132,7 @@ export default Vue.extend({
     // background-color: #e6e7e8;
     // DEFAULT MONGODB CHART EMBED IFRAME STYLE
     // border: none;
-    border: 22px solid #f1f2f2;
+    border: 20px solid #f1f2f2;
     // border-radius: 2px;
     // border-radius: 12px;
     // box-shadow: 0 2px 10px 0 rgba(16, 17, 17, 0.2);

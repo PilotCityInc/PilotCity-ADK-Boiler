@@ -3,10 +3,8 @@
   <v-container class="module-instruct">
     <div class="module-instruct__container">
       <div class="module-instruct__description">
-        <div
-          class="module-instruct__description-label font-weight-black text-subtitle-2 text-uppercase"
-        >
-          <span>Instructions</span>
+        <div class="module-instruct__description-label">
+          <span>Goal</span>
         </div>
         <div
           :contenteditable="!readonly"
@@ -17,6 +15,9 @@
         </div>
       </div>
       <div class="module-instruct__instructions">
+        <div class="module-instruct__description-label">
+          <span>Instructions</span>
+        </div>
         <div
           v-for="(item, index) in instructions"
           :key="item + index"
@@ -106,3 +107,5 @@ export default {
   }
 };
 </script>
+
+<style lang="scss"></style>

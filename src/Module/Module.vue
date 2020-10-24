@@ -60,7 +60,7 @@
         </div>
       </div>
       <div class="module__body">
-        <v-progress-linear color="#dedede" height="2" value="75" buffer-value="95" stream />
+        <v-progress-linear color="#dedede" height="2" value="100" buffer-value="100" stream />
         <div class="module__pagination">
           <div v-for="page in subpages" :key="page" :class="{ active: currentPage == page }">
             <div class="module__pagination-button--active" />
@@ -88,6 +88,10 @@
 <style lang="scss">
 .module {
   // background-color: #404142;
+
+  &__body {
+    // margin-top: 0px;
+  }
 }
 .module__menu {
   .v-color-picker {
@@ -132,7 +136,7 @@ export default {
     'module-preview': Module.Default
   },
   setup() {
-    const moduleName = ref('Request for Interns');
+    const moduleName = ref('Request for Projects');
     console.log(this); // maybe we can use exported `name:` property
     const page: Page = reactive({
       subpages: ['Setup', 'Presets', 'Monitor'],

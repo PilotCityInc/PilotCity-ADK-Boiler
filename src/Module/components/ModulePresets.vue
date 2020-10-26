@@ -7,12 +7,22 @@
 </template>
 
 <script lang="ts">
+import { ref } from '@vue/composition-api';
 import Instruct from './ModuleInstruct.vue';
 
 export default {
   name: 'ModulePresets',
   components: {
     Instruct
+  },
+  setup() {
+    const setupInstructions = ref({
+      description: '',
+      instructions: ['']
+    });
+    return {
+      setupInstructions
+    };
   }
 };
 </script>

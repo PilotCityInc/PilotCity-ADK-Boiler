@@ -9,13 +9,13 @@
           <span>Instructions</span>
         </div>
         <div :contenteditable="!readonly" class="font-weight-black text-body-1">
-          {{ moduleDescription }}
+          {{ description }}
         </div>
       </div>
       <div class="module-instruct__instructions">
         <div
           v-for="(item, index) in instructions"
-          :key="item"
+          :key="item + index"
           class="module-instruct__instructions-item"
         >
           <v-avatar

@@ -8,18 +8,14 @@
         >
           <span>Instructions</span>
         </div>
-        <div
-          :contenteditable="!readonly"
-          class="font-weight-black text-body-1"
-          @input="updateDesc($event)"
-        >
-          {{ moduleDescription }}
+        <div :contenteditable="!readonly" class="font-weight-black text-body-1">
+          {{ description }}
         </div>
       </div>
       <div class="module-instruct__instructions">
         <div
           v-for="(item, index) in instructions"
-          :key="item"
+          :key="item + index"
           class="module-instruct__instructions-item"
         >
           <v-avatar
@@ -31,7 +27,6 @@
           <div
             :contenteditable="!readonly"
             class="module-instruct__instructions-text font-weight-black text-body-1"
-            @input="instructions = "
           >
             {{ item }}
           </div>
@@ -49,7 +44,7 @@
 </template>
 
 <script lang="ts">
-import { computed, reactive, ref, WritableComputedRef } from '@vue/composition-api';
+import { computed, reactive, toRefs, WritableComputedRef } from '@vue/composition-api';
 
 export default {
   name: 'ModuleInstruct',
@@ -74,26 +69,26 @@ export default {
   },
   apollo: {},
   setup(props, { emit }) {
-    const updateData = reactive({
+    const description: WritableComputedRef<string> = computed({
+      get: () => (props.value as Val).description,
+      set: newVal => emit('input', newVal)
+    });
+    const instructions: WritableComputedRef<string[]> = computed({
+      get: () => (props.value as Val).instructions,
+      set: newVal => emit('input', instructions.value.concat(newVal))
+    });
+    const updateData: Update = reactive({
       updateDesc: (e: Event) => {
         const target = e.target as HTMLElement;
-        instructData.moduleDescription = target.innerText;
+        description.value = target.innerText;
       },
       updateInstruction: (e: Event) => {
         const target = e.target as HTMLElement;
         instructions.value = [target.innerText];
       }
     });
-    const description: WritableComputedRef<string> = computed({
-      get: () => props.value.description as string,
-      set: newVal => emit('input', instructions.value.(newVal))
-    })
-    const instructions: WritableComputedRef<string[]> = computed({
-      get: () => props.value.instructions as string[],
-      set: newVal => emit('input', instructions.value.concat(newVal))
-    });
     return {
-      toRef(updateData),
+      ...toRefs(updateData as any),
       description,
       instructions
     };

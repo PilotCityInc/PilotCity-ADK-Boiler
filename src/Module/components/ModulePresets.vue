@@ -1,16 +1,28 @@
 <template>
   <v-container class="module-outcomes">
-    <div class="module-outcomes__container"></div>
+    <div class="module-outcomes__container">
+      <Instruct v-model="setupInstructions" />
+    </div>
   </v-container>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-// import gql from 'graphql-tag';
+import { ref } from '@vue/composition-api';
+import Instruct from './ModuleInstruct.vue';
 
-export default Vue.extend({
+export default {
   name: 'ModulePresets',
-  apollo: {},
-  data: () => ({})
-});
+  components: {
+    Instruct
+  },
+  setup() {
+    const setupInstructions = ref({
+      description: '',
+      instructions: ['']
+    });
+    return {
+      setupInstructions
+    };
+  }
+};
 </script>

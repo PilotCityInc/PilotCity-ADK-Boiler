@@ -12,10 +12,8 @@
             <template v-slot="{ open }">
               <v-scroll-y-transition hide-on-leave>
                 <div v-if="!open" class="d-flex flex-column justify-center">
-                  <v-icon class="d-flex justify-center secondary--text"> mdi-chevron-down </v-icon>
-                  <div
-                    class="text-uppercase font-weight-bold text-subtitle-2 secondary--text text-center"
-                  >
+                  <v-icon class="d-flex justify-center"> mdi-chevron-down </v-icon>
+                  <div class="text-uppercase font-weight-bold text-subtitle-2 text-center">
                     Instructions
                   </div>
                 </div>
@@ -25,13 +23,9 @@
           <v-expansion-panel-content>
             <module-instruct readonly />
             <div @click="showInstructions = true">
-              <div
-                class="text-uppercase font-weight-bold text-subtitle-2 secondary--text text-center"
-              >
-                close
-              </div>
+              <div class="text-uppercase font-weight-bold text-subtitle-2 text-center">close</div>
               <!-- <div class="hr"/> OPTIONAL -->
-              <v-icon class="d-flex secondary--text justify-center"> mdi-chevron-up </v-icon>
+              <v-icon class="d-flex justify-center"> mdi-chevron-up </v-icon>
             </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
@@ -42,18 +36,25 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-// import gql from 'graphql-tag';
+import { ref } from '@vue/composition-api';
 import Instruct from './ModuleInstruct.vue';
 
-export default Vue.extend({
+export default {
   name: 'ModuleDefault',
   components: {
     'module-instruct': Instruct
   },
   apollo: {},
-  data: () => ({
-    showInstructions: true
-  })
-});
+  data() {
+    const setupInstructions = ref({
+      description: '',
+      instructions: ['', '', '']
+    });
+    const showInstructions = ref(true);
+    return {
+      setupInstructions,
+      showInstructions
+    };
+  }
+};
 </script>

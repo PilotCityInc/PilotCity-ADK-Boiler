@@ -116,7 +116,7 @@ export default {
     'module-monitor': Module.Monitor,
     'module-setup': Module.Setup,
     'module-presets': Module.Presets,
-    'module-default': Module.Default
+    'module-preview': Module.Default
   },
   setup() {
     const moduleName = ref('Module Name');

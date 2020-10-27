@@ -1,10 +1,11 @@
+# This dockerfile syncs container node modules with the client
 FROM node:12.19.0
-# installs rsync 
 RUN apt-get update -y && apt-get upgrade -y 
 RUN apt-get install rsync -y
 # Create and define the node_modules's cache directory.
 RUN mkdir /usr/src/cache
 WORKDIR /usr/src/cache
+
 # Install the application's dependencies into the node_modules's cache directory.
 COPY package*.json ./
 # RUN yarn global add @vue/cli

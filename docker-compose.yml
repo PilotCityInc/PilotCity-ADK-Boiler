@@ -1,17 +1,88 @@
-version: "3.8"
+version: '3.8'
+networks:
+  pdk:
+    driver: bridge
 services:
-  microapp:
-    build: .
-    working_dir: /usr/src/app
+  microapp: #in container-based development
+    container_name: microapp
+    build: 
+      context: .
+      dockerfile: client.dockerfile 
     environment:
       - NODE_ENV=development
       - CHOKIDAR_USEPOLLING=true
       - MEMORY_LIMIT=2048
       - MAX_THREADS=4
-    volumes: 
-    - ./:/usr/src/app:cached
+      - npm_config_unsafe_perm=true
+    volumes:
+      - ./:/usr/src/app
+      - usr/src/app/node_modules
     ports:
       - 8080:8080
     stdin_open: true
     tty: true
-    command: sh /usr/src/app/entrypoint.sh
+    command: ["yarn","run","serve"]
+    networks: 
+      - pdk
+  # microapp: # host-based development
+  #   container_name: microapp
+  #   build: 
+  #     context: .
+  #     dockerfile: host.dockerfile 
+  #   environment:
+  #     - NODE_ENV=development
+  #     - CHOKIDAR_USEPOLLING=true
+  #     - MEMORY_LIMIT=2048
+  #     - MAX_THREADS=4
+  #   volumes:
+  #     - ./:/usr/src/app:cached
+  #   ports:
+  #     - 8080:8080
+  #   stdin_open: true
+  #   tty: true
+  #   command: sh /usr/src/app/entrypoint.sh
+  #   networks: 
+  #     - pdk
+  mongodb: # creates mongodb srever
+    image: mongo
+    container_name: mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    networks: 
+      - pdk
+    volumes: 
+    - ./db:/data/db
+  mongo-cli:
+    container_name: mongo-cli
+    image: mongo
+    networks: 
+      - pdk
+    stdin_open: true
+    tty: true
+    command:
+      [
+        'mongo',
+        '--host',
+        'mongodb',
+        '-u',
+        'root',
+        '-p',
+        'password',
+        '--authenticationDatabase',
+        'admin',
+        'primary',
+      ]
+    volumes:
+        - ./shell:/home/mongodb
+  mongo-express: # mongodb web client
+    image: mongo-express
+    container_name: mongo-express
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: password
+      ME_CONFIG_MONGODB_SERVER: mongodb
+    networks: 
+    - pdk

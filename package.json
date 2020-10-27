@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@mdi/font": "^3.6.95",
+    "@types/mongodb": "^3.5.31",
     "@vue/cli": "^4.4.6",
+    "@vue/composition-api": "^1.0.0-beta.18",
     "apollo-boost": "^0.4.9",
     "apollo-cache-inmemory": "^1.6.6",
     "apollo-link-context": "^1.0.20",
@@ -54,5 +56,20 @@
     "vue-cli-plugin-vuetify": "~2.0.6",
     "vue-template-compiler": "^2.6.12",
     "vuetify-loader": "^1.6.0"
-  }
+  },
+  "description": "```\r docker-compose up\r ```",
+  "main": "main.ts",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PilotCityInc/PilotCity-PDK-Boiler.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PilotCityInc/PilotCity-PDK-Boiler/issues"
+  },
+  "homepage": "https://github.com/PilotCityInc/PilotCity-PDK-Boiler#readme"
 }

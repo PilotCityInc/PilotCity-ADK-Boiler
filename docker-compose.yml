@@ -60,6 +60,8 @@ services:
       - pdk
     stdin_open: true
     tty: true
+    depends_on:
+      - mongodb
     command:
       [
         'mongo',
@@ -86,3 +88,5 @@ services:
       ME_CONFIG_MONGODB_SERVER: mongodb
     networks: 
     - pdk
+    depends_on:
+      - mongodb

@@ -86,6 +86,13 @@
   </v-container>
 </template>
 <style lang="scss">
+html,
+body {
+  font-family: 'Raleway';
+  font-size: 16px;
+  width: 100%;
+  height: 100%;
+}
 .module__menu {
   .v-color-picker {
     &__controls {
@@ -97,6 +104,7 @@
 <script lang="ts">
 import { computed, reactive, ref, toRefs } from '@vue/composition-api';
 import '@/styles/module.scss';
+import db from '@/mongo';
 import * as Module from './components';
 
 interface Page {
@@ -118,7 +126,7 @@ export default {
     'module-presets': Module.Presets,
     'module-preview': Module.Default
   },
-  setup() {
+  setup(_props, ctx) {
     const moduleName = ref('Module Name');
     const page: Page = reactive({
       subpages: ['Setup', 'Presets', 'Monitor'],

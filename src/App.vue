@@ -23,12 +23,3 @@ export default Vue.extend({
   })
 });
 </script>
-<style lang="scss">
-html,
-body {
-  font-family: 'Raleway';
-  font-size: 16px;
-  width: 100%;
-  height: 100%;
-}
-</style>

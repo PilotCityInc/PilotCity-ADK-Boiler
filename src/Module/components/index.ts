@@ -1,7 +1,7 @@
 import Instruct from './ModuleInstruct.vue';
-import Metrics from './ModuleMetrics.vue';
-import Edit from './ModuleEdit.vue';
-import Outcomes from './ModuleOutcomes.vue';
+import Monitor from './ModuleMonitor.vue';
+import Setup from './ModuleSetup.vue';
+import Presets from './ModulePresets.vue';
 import Default from './ModuleDefault.vue';
 
-export { Instruct, Metrics, Edit, Outcomes, Default };
+export { Instruct, Monitor, Setup, Presets, Default };

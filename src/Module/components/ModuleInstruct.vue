@@ -8,14 +8,14 @@
         >
           <span>Instructions</span>
         </div>
-        <div :contenteditable="!readonly" class="font-weight-black text-body-1" @input="updateDesc">
-          {{ moduleDescription }}
+        <div :contenteditable="!readonly" class="font-weight-black text-body-1">
+          {{ description }}
         </div>
       </div>
       <div class="module-instruct__instructions">
         <div
           v-for="(item, index) in instructions"
-          :key="item"
+          :key="item + index"
           class="module-instruct__instructions-item"
         >
           <v-avatar
@@ -27,7 +27,6 @@
           <div
             :contenteditable="!readonly"
             class="module-instruct__instructions-text font-weight-black text-body-1"
-            @input="updateItem($event, index)"
           >
             {{ item }}
           </div>
@@ -35,24 +34,9 @@
         <div
           v-if="!readonly"
           class="module-instruct__instructions-add font-weight-black text-body-1"
-          @click="addItem"
+          @click="instructions = ''"
         >
           <v-icon class="module-instruct__instructions-add-icon"> mdi-plus </v-icon>
-        </div>
-      </div>
-      <div class="d-flex flex-column">
-        <div v-if="!readonly" class="module-instruct__actions">
-          <div class="module-instruct__actions-cancel text-button">
-            <span href=""> cancel </span>
-          </div>
-          <v-btn
-            :ripple="false"
-            height="40"
-            outlined
-            class="active module-instruct__actions-save elevation-0"
-          >
-            Save
-          </v-btn>
         </div>
       </div>
     </div>
@@ -60,49 +44,54 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import gql from 'graphql-tag';
+import { computed, reactive, toRefs, WritableComputedRef } from '@vue/composition-api';
 
-export default Vue.extend({
+export default {
   name: 'ModuleInstruct',
+  model: {
+    prop: 'value',
+    event: 'input'
+  },
   props: {
     readonly: {
       type: Boolean,
       default: false
-    }
-  },
-  apollo: {
-    instructions: gql`
-      query instructQuery {
-        mApracticelogOpt {
-          instructions
-        }
+    },
+    value: {
+      type: Object,
+      default: () => {
+        return {
+          description: '',
+          instructions: ['', '', '']
+        };
       }
-    `
-  },
-  data: () => ({
-    moduleDescription:
-      "As you practice, use and apply the employer's product or service, log how many minutes you use it each time.",
-    instructions: [
-      'Enter number of minutes to log and add “m” at end',
-      'Click on “Log” button to enter the minutes practiced',
-      'View total logged minutes'
-    ] // TODO: parse for empty string (strings w/o _real_ characters)
-  }),
-  methods: {
-    updateDesc(e: Event) {
-      const el = e.target as HTMLTextAreaElement;
-      this.moduleDescription = el.innerText;
-      console.log('description has been updated!');
-    },
-    updateItem(e: Event, i: number) {
-      const el = e.target as HTMLTextAreaElement;
-      this.instructions[i] = el.innerText;
-      console.log(`instruction ${i} has been updated!`);
-    },
-    addItem() {
-      this.instructions.push('');
     }
+  },
+  apollo: {},
+  setup(props, { emit }) {
+    const description: WritableComputedRef<string> = computed({
+      get: () => (props.value as Val).description,
+      set: newVal => emit('input', newVal)
+    });
+    const instructions: WritableComputedRef<string[]> = computed({
+      get: () => (props.value as Val).instructions,
+      set: newVal => emit('input', instructions.value.concat(newVal))
+    });
+    const updateData: Update = reactive({
+      updateDesc: (e: Event) => {
+        const target = e.target as HTMLElement;
+        description.value = target.innerText;
+      },
+      updateInstruction: (e: Event) => {
+        const target = e.target as HTMLElement;
+        instructions.value = [target.innerText];
+      }
+    });
+    return {
+      ...toRefs(updateData as any),
+      description,
+      instructions
+    };
   }
-});
+};
 </script>

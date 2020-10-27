@@ -44,9 +44,15 @@
 </template>
 
 <script lang="ts">
-import { computed, reactive, toRefs, WritableComputedRef } from '@vue/composition-api';
+import {
+  computed,
+  defineComponent,
+  reactive,
+  toRefs,
+  WritableComputedRef
+} from '@vue/composition-api';
 
-export default {
+export default defineComponent({
   name: 'ModuleInstruct',
   model: {
     prop: 'value',
@@ -70,14 +76,14 @@ export default {
   apollo: {},
   setup(props, { emit }) {
     const description: WritableComputedRef<string> = computed({
-      get: () => (props.value as Val).description,
+      get: () => props.value.description,
       set: newVal => emit('input', newVal)
     });
     const instructions: WritableComputedRef<string[]> = computed({
-      get: () => (props.value as Val).instructions,
+      get: () => props.value.instructions,
       set: newVal => emit('input', instructions.value.concat(newVal))
     });
-    const updateData: Update = reactive({
+    const updateData = reactive({
       updateDesc: (e: Event) => {
         const target = e.target as HTMLElement;
         description.value = target.innerText;
@@ -93,5 +99,5 @@ export default {
       instructions
     };
   }
-};
+});
 </script>

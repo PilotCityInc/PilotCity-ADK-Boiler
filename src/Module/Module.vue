@@ -102,9 +102,8 @@ body {
 }
 </style>
 <script lang="ts">
-import { computed, reactive, ref, toRefs } from '@vue/composition-api';
+import { computed, defineComponent, reactive, ref, toRefs } from '@vue/composition-api';
 import '@/styles/module.scss';
-import db from '@/mongo';
 import * as Module from './components';
 
 interface Page {
@@ -118,7 +117,7 @@ interface Color {
   selectedColor: string;
   getColor: string;
 }
-export default {
+export default defineComponent({
   name: 'Microapp',
   components: {
     'module-monitor': Module.Monitor,
@@ -126,7 +125,7 @@ export default {
     'module-presets': Module.Presets,
     'module-preview': Module.Default
   },
-  setup(_props, ctx) {
+  setup() {
     const moduleName = ref('Module Name');
     const page: Page = reactive({
       subpages: ['Setup', 'Presets', 'Monitor'],
@@ -155,5 +154,5 @@ export default {
       menu
     };
   }
-};
+});
 </script>

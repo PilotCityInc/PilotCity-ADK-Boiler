@@ -1,8 +1,20 @@
 {
-  "name": "pc-boiler-plate",
+  "author": "Juxsta",
+  "license": "MIT",
+  "main": "/dist/index.ts",
+  "name": "@PilotCityInc/pc-boiler-plate",
   "version": "0.1.0",
-  "private": true,
-  "scripts": {
+  "description": "PilotCity Development Kit Template for creating your own Program Activities",
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PilotCityInc/PilotCity-PDK-Boiler.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PilotCityInc/PilotCity-PDK-Boiler/issues"
+  },
+  "homepage": "https://github.com/PilotCityInc/PilotCity-PDK-Boiler#readme",
+  "scripts":{
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
@@ -59,20 +71,5 @@
     "vue-cli-plugin-vuetify": "~2.0.7",
     "vue-template-compiler": "^2.6.12",
     "vuetify-loader": "^1.6.0"
-  },
-  "description": "PilotCity Development Kit Template for creating your own Program Activities",
-  "main": "index.ts",
-  "directories": {
-    "test": "tests"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/PilotCityInc/PilotCity-PDK-Boiler.git"
-  },
-  "author": "Juxsta",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/PilotCityInc/PilotCity-PDK-Boiler/issues"
-  },
-  "homepage": "https://github.com/PilotCityInc/PilotCity-PDK-Boiler#readme"
+  }
 }

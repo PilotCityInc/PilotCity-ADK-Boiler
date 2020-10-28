@@ -1,9 +1,5 @@
 <template>
-  <v-app>
-    <v-main>
-      <Module />
-    </v-main>
-  </v-app>
+  <Module />
 </template>
 
 <script lang="ts">
@@ -16,10 +12,6 @@ export default Vue.extend({
 
   components: {
     Module
-  },
-
-  data: () => ({
-    //
-  })
+  }
 });
 </script>

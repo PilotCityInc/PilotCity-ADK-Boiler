@@ -16,22 +16,31 @@ export const state: {
 });
 // Dev environment
 const devMethods = reactive({
-  async update(collectionName: string, query: string) {
+  async update<T = any>(
+    collection: string,
+    payload: T,
+    query: { [x: string]: any },
+    options?: { upsert: boolean }
+  ) {
     try {
       await state.devClient.connect();
       const database = state.devClient.db(dbName);
-      const collection = database.collection(collectionName);
-      await collection.insertOne(query);
+      await database.collection(collection).findOneAndUpdate(
+        query,
+        {
+          $set: payload
+        },
+        options
+      );
     } finally {
       await state.devClient.close();
     }
   },
-  async read(collectionName: string, query: any) {
+  async read(collection: string, query: { [x: string]: any }) {
     try {
       await state.devClient.connect();
       const database = state.devClient.db(dbName);
-      const collection = database.collection(collectionName);
-      await collection.findOne(query);
+      return await database.collection(collection).findOne(query);
     } finally {
       await state.devClient.close();
     }
@@ -49,14 +58,14 @@ const pluginClient = computed(() =>
 );
 const pluginDb = computed(() => pluginClient?.value?.db('Primary'));
 const pluginMethods = reactive({
-  async update<T>(
+  async update<T = any>(
     collection: string,
     payload: T,
-    filter: { [x: string]: any },
+    query: { [x: string]: any },
     options?: { upsert: boolean }
   ) {
     return pluginDb.value?.collection<typeof payload>(collection).findOneAndUpdate(
-      filter,
+      query,
       {
         $set: payload
       },

@@ -1,11 +1,17 @@
 # PilotCity-Boiler
 This a template repository that can be used for PilotCity developers to create their own activities for the PilotCity Platform.
-Fork this repo to start developing
 Do to the extensive use of docker, it's recommended for you to be familiar with docker and docker-compose before using this repository.
+
+## Using the template
+To use this repo, create a template on your own github account. Do this by clicking on the template button on the top right of the
+repository page.
+Make it public and only pull the master branch. 
 
 ## Project setup
 This project is built for development through docker and vscode. Everything should work out of the box.
-Once forked you can start the development server by:
+
+
+
 ```
 docker-compose up
 ```

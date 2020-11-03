@@ -10,6 +10,12 @@ Make it public and only pull the master branch.
 ## Project setup
 This project is built for development through docker and vscode. Everything should work out of the box.
 
+### Add Original Template as upstream for changes
+`git remote add upstream https://github.com/PilotCityInc/PilotCity-PDK-Boiler `
+`git merge upstream/master master --allow-unrelated-histories --squash`
+Fix any conflicts if possible
+`git push`
+
 
 
 ```

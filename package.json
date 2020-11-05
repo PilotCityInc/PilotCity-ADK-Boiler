@@ -5,7 +5,9 @@
   "name": "@PilotCityInc/pc-boiler-plate",
   "version": "0.1.0",
   "description": "PilotCity Development Kit Template for creating your own Program Activities",
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/PilotCityInc/PilotCity-PDK-Boiler.git"
@@ -14,7 +16,7 @@
     "url": "https://github.com/PilotCityInc/PilotCity-PDK-Boiler/issues"
   },
   "homepage": "https://github.com/PilotCityInc/PilotCity-PDK-Boiler#readme",
-  "scripts":{
+  "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
@@ -22,6 +24,8 @@
   },
   "dependencies": {
     "@mdi/font": "^3.6.95",
+    "@rollup/plugin-buble": "^0.21.3",
+    "@rollup/plugin-commonjs": "^16.0.0",
     "@types/mongodb": "^3.5.31",
     "@vue/cli": "^4.4.6",
     "@vue/composition-api": "^1.0.0-beta.15",
@@ -39,6 +43,7 @@
     "realm-web": "^0.7.0",
     "register-service-worker": "^1.7.1",
     "roboto-fontface": "*",
+    "rollup-plugin-vue": "^6.0.0-beta.11",
     "vee-validate": "^3.4.1",
     "vue": "^2.6.12",
     "vue-apollo": "^3.0.4y",

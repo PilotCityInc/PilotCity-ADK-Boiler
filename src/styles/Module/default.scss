@@ -6,6 +6,10 @@
   }
 }
 .module-default{
+  &__instructions{
+    width: 100%;
+    color: black;
+  }
   &.container{
     display:flex;
     flex-direction: column;

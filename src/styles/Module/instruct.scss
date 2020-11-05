@@ -45,8 +45,12 @@
       padding: 15px;
     }
     &-label {
-      margin-left: 15px;
-      margin-bottom: 17px;
+      margin-left: 10px;
+      margin-bottom: 10px;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
   }
   &__instructions {

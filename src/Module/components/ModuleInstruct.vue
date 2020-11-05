@@ -48,7 +48,13 @@
 </template>
 
 <script lang="ts">
-import { computed, reactive, WritableComputedRef, toRefs } from '@vue/composition-api';
+import {
+  computed,
+  reactive,
+  WritableComputedRef,
+  toRefs,
+  defineComponent
+} from '@vue/composition-api';
 
 interface Val {
   description: string;
@@ -58,7 +64,7 @@ interface Update {
   updateDesc: (e: Event) => void;
   updateInstruction: (e: Event) => void;
 }
-export default {
+export default defineComponent({
   name: 'ModuleInstruct',
   model: {
     prop: 'value',
@@ -105,7 +111,7 @@ export default {
       instructions
     };
   }
-};
+});
 </script>
 
 <style lang="scss"></style>

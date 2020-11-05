@@ -1,8 +1,20 @@
 {
-  "name": "pc-boiler-plate",
+  "author": "Juxsta",
+  "license": "MIT",
+  "main": "/dist/index.ts",
+  "name": "@PilotCityInc/pc-boiler-plate",
   "version": "0.1.0",
-  "private": true,
-  "scripts": {
+  "description": "PilotCity Development Kit Template for creating your own Program Activities",
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PilotCityInc/PilotCity-PDK-Boiler.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PilotCityInc/PilotCity-PDK-Boiler/issues"
+  },
+  "homepage": "https://github.com/PilotCityInc/PilotCity-PDK-Boiler#readme",
+  "scripts":{
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
@@ -10,6 +22,7 @@
   },
   "dependencies": {
     "@mdi/font": "^3.6.95",
+    "@types/mongodb": "^3.5.31",
     "@vue/cli": "^4.4.6",
     "@vue/composition-api": "^1.0.0-beta.15",
     "apollo-boost": "^0.4.9",
@@ -21,6 +34,8 @@
     "eslint-loader": "^4.0.2",
     "fork-ts-checker-webpack-plugin": "^5.2.0",
     "graphql-tag": "^2.9.0",
+    "mongodb": "^3.6.2",
+    "mongodb-stitch-browser-sdk": "^4.8.0",
     "realm-web": "^0.7.0",
     "register-service-worker": "^1.7.1",
     "roboto-fontface": "*",
@@ -39,6 +54,7 @@
     "@vue/cli-plugin-typescript": "~4.4.0",
     "@vue/cli-plugin-unit-jest": "~4.4.0",
     "@vue/cli-service": "~4.4.0",
+    "@vue/cli-service-global": "^4.5.6",
     "@vue/eslint-config-airbnb": "^5.0.2",
     "@vue/eslint-config-typescript": "^5.0.2",
     "@vue/test-utils": "^1.0.3",

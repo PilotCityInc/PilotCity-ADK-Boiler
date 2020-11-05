@@ -178,7 +178,7 @@
 </template>
 
 <script lang="ts">
-import { reactive, ref, toRefs } from '@vue/composition-api';
+import { reactive, toRefs } from '@vue/composition-api';
 // import gql from 'graphql-tag';
 
 export default {

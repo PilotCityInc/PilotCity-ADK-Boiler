@@ -1,0 +1,12 @@
+db
+db.drop()
+db.drop
+db
+primary.drop()
+db.collection
+db.crop
+db.drop
+db.drop()
+db.dropDatabase()
+db.adminCommand('listDatabases')
+use Primary

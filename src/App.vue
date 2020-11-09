@@ -1,9 +1,5 @@
 <template>
-  <v-app>
-    <v-main>
-      <Module />
-    </v-main>
-  </v-app>
+  <Module />
 </template>
 
 <script lang="ts">
@@ -16,19 +12,6 @@ export default Vue.extend({
 
   components: {
     Module
-  },
-
-  data: () => ({
-    //
-  })
+  }
 });
 </script>
-<style lang="scss">
-html,
-body {
-  font-family: 'Raleway';
-  font-size: 16px;
-  width: 100%;
-  height: 100%;
-}
-</style>

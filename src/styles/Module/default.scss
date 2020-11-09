@@ -6,10 +6,17 @@
   }
 }
 .module-default{
+  &__instructions{
+    width: 100%;
+    color: black;
+  }
   &.container{
     display:flex;
     flex-direction: column;
     align-items: center;
+  }
+  &__instructions{
+    width: 100%;
   }
   &__container{
     display: flex;

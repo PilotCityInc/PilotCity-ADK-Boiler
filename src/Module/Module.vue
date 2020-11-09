@@ -86,6 +86,13 @@
   </v-container>
 </template>
 <style lang="scss">
+html,
+body {
+  font-family: 'Raleway';
+  font-size: 16px;
+  width: 100%;
+  height: 100%;
+}
 .module__menu {
   .v-color-picker {
     &__controls {

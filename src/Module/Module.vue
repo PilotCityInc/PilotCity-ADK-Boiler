@@ -94,13 +94,6 @@ body {
   width: 100%;
   height: 100%;
 }
-.module {
-  // background-color: #404142;
-
-  &__body {
-    // margin-top: 0px;
-  }
-}
 .module__menu {
   .v-color-picker {
     &__controls {

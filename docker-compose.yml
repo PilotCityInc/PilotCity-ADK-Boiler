@@ -7,7 +7,6 @@ services:
     container_name: microapp
     build: 
       context: .
-      dockerfile: client.dockerfile 
     environment:
       - NODE_ENV=development
       - CHOKIDAR_USEPOLLING=true

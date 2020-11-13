@@ -14,7 +14,7 @@
         @click="currentPage = 'preview'"
         >Preview</v-btn
       >
-      <v-menu v-model="menu" left :close-on-content-click="false" offset-y>
+      <v-menu offset-y>
         <template v-slot:activator="{ on, attrs }">
           <v-btn v-bind="attrs" small icon class="module__navbar-button" v-on="on">
             <v-icon color="grey lighten-1">mdi-cog</v-icon></v-btn
@@ -61,7 +61,7 @@
       </div>
       <div class="module__body">
         <v-progress-linear color="#dedede" height="2" value="100" buffer-value="100" stream />
-        <div class="module__pagination">
+        <div v-if="currentPage != 'preview'" class="module__pagination">
           <div v-for="page in subpages" :key="page" :class="{ active: currentPage == page }">
             <div class="module__pagination-button--active" />
             <v-btn
@@ -107,27 +107,6 @@ import { computed, reactive, ref, toRefs } from '@vue/composition-api';
 import '@/styles/module.scss';
 import * as Module from './components';
 
-interface Page {
-  subpages: string[];
-  currentPage: string;
-  preview: boolean;
-  getComponent: string;
-}
-interface Color {
-  pilotcityColors: string[][];
-  selectedColor: string;
-  getColor: string;
-}
-interface Config {
-  description: string;
-  instruct: string[];
-  deletable: boolean;
-  group: string[];
-  deliverable: boolean;
-  notifications: string;
-  reflection: string[];
-  access: string;
-}
 export default {
   name: 'ModuleName',
   components: {
@@ -138,25 +117,23 @@ export default {
   },
   setup() {
     const moduleName = ref('Request for Projects');
-    console.log(this); // maybe we can use exported `name:` property
-    const page: Page = reactive({
+    const page = reactive({
       subpages: ['Setup', 'Presets', 'Monitor'],
-      currentPage: 'Setup',
-      preview: false,
-      getComponent: computed(() => {
-        return `module-${page.currentPage.toLowerCase()}`;
-      })
+      currentPage: 'Setup'
     });
-    const color: Color = reactive({
+    const getComponent = computed(() => {
+      return `module-${page.currentPage.toLowerCase()}`;
+    });
+    const color = reactive({
       pilotcityColors: [
         ['#6eba80', '#3c9dcd', '#ea6764'],
         ['#eda1bf', '#fec34b', '#bdbdbd'],
         ['#ae90b0', '#f79961', '#000000']
       ],
-      selectedColor: '#3c9dcd',
-      getColor: computed(() => {
-        return color.selectedColor.substring(0, 7);
-      })
+      selectedColor: '#3c9dcd'
+    });
+    const getColor = computed(() => {
+      return color.selectedColor.substring(0, 7);
     });
     const config = ref({
       description: '',
@@ -168,7 +145,9 @@ export default {
       ...toRefs(page as any),
       config,
       moduleName,
-      menu
+      menu,
+      getComponent,
+      getColor
     };
   }
 };

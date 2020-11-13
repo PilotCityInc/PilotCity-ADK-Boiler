@@ -4,9 +4,8 @@ networks:
     driver: bridge
 services:
   microapp: #in container-based development
+    image: pilotcity/boiler
     container_name: microapp
-    build: 
-      context: .
     environment:
       - NODE_ENV=development
       - CHOKIDAR_USEPOLLING=true
@@ -23,25 +22,6 @@ services:
     command: ["yarn","run","serve"]
     networks: 
       - pdk
-  # microapp: # host-based development
-  #   container_name: microapp
-  #   build: 
-  #     context: .
-  #     dockerfile: host.dockerfile 
-  #   environment:
-  #     - NODE_ENV=development
-  #     - CHOKIDAR_USEPOLLING=true
-  #     - MEMORY_LIMIT=2048
-  #     - MAX_THREADS=4
-  #   volumes:
-  #     - ./:/usr/src/app:cached
-  #   ports:
-  #     - 8080:8080
-  #   stdin_open: true
-  #   tty: true
-  #   command: sh /usr/src/app/entrypoint.sh
-  #   networks: 
-  #     - pdk
   mongo: # creates mongodb srever
     image: juxsta/boilerdb
     container_name: mongo

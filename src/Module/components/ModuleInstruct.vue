@@ -56,14 +56,6 @@ import {
   defineComponent
 } from '@vue/composition-api';
 
-interface Val {
-  description: string;
-  instructions: string[];
-}
-interface Update {
-  updateDesc: (e: Event) => void;
-  updateInstruction: (e: Event) => void;
-}
 export default defineComponent({
   name: 'ModuleInstruct',
   model: {
@@ -88,14 +80,14 @@ export default defineComponent({
   apollo: {},
   setup(props, { emit }) {
     const description: WritableComputedRef<string> = computed({
-      get: () => (props.value as Val).description,
+      get: () => props.value.description,
       set: newVal => emit('input', newVal)
     });
     const instructions: WritableComputedRef<string[]> = computed({
-      get: () => (props.value as Val).instructions,
+      get: () => props.value.instructions,
       set: newVal => emit('input', instructions.value.concat(newVal))
     });
-    const updateData: Update = reactive({
+    const updateData = reactive({
       updateDesc: (e: Event) => {
         const target = e.target as HTMLElement;
         description.value = target.innerText;

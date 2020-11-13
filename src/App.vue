@@ -1,5 +1,7 @@
 <template>
-  <Module />
+  <v-app>
+    <Module />
+  </v-app>
 </template>
 
 <script lang="ts">

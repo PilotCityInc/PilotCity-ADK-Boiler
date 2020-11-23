@@ -377,7 +377,6 @@ export default {
             .join('')}`;
         })
       });
-
       this.input = null;
     }
   },

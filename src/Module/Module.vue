@@ -51,7 +51,7 @@
         <div class="module__header text-md-h5 text-sm-subtitle-1 d-flex align-center">
           <input :value="moduleName" type="text" class="module__header-text" />
           <v-chip-group class="module__header-chips"
-            ><v-chip dark small>Preset Tags</v-chip>
+            ><v-chip disabled dark small>Preset Tags</v-chip>
           </v-chip-group>
         </div>
       </div>
@@ -83,7 +83,7 @@
     <!-- TIMELINE START -->
 
     <template>
-      <v-container style="max-width: 675px">
+      <v-container v-if="currentPage == 'preview'" style="max-width: 675px">
         <v-menu offset-y>
           <template v-slot:activator="{ on, attrs }">
             <v-btn v-bind="attrs" small outlined depressed v-on="on"

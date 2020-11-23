@@ -112,7 +112,7 @@
       <v-container v-if="currentPage == 'preview'" style="max-width: 675px">
         <v-menu offset-y>
           <template v-slot:activator="{ on, attrs }">
-            <v-btn v-bind="attrs" small outlined depressed v-on="on"
+            <v-btn v-bind="attrs" small :color="selectedColor" dark depressed v-on="on"
               ><v-icon left>mdi-message-reply-text</v-icon>Chat with all</v-btn
             >
           </template>

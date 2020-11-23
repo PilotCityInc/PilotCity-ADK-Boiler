@@ -383,6 +383,7 @@ export default {
   },
 
   setup() {
+    // ENTER ACTIVITY NAME BELOW
     const moduleName = ref('Activity Name');
     const page = reactive({
       subpages: ['Setup', 'Presets', 'Monitor'],
@@ -397,6 +398,7 @@ export default {
         ['#eda1bf', '#fec34b', '#bdbdbd'],
         ['#ae90b0', '#f79961', '#000000']
       ],
+      // ENTER ACTIVITY COLOR
       selectedColor: '#dedede'
     });
     const getColor = computed(() => {

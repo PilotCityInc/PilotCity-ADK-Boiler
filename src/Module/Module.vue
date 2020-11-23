@@ -2,19 +2,38 @@
   <!--  TODO: make the inputs into actual components -->
   <v-container class="module">
     <div class="module__navbar">
-      <v-btn dark class="module__navbar-button" small depressed color="grey lighten-1" rounded
+      <v-btn
+        v-if="currentPage == 'preview'"
+        dark
+        class="module__navbar-button"
+        small
+        depressed
+        color="grey lighten-1"
+        rounded
         >00:00:00</v-btn
       >
       <v-btn
+        v-if="currentPage != 'preview'"
         class="module__navbar-button"
         outlined
         x-small
         depressed
-        color="grey lighten-1"
         @click="currentPage = 'preview'"
         >Preview</v-btn
       >
-      <v-menu offset-y left>
+
+      <v-btn
+        v-if="currentPage == 'preview'"
+        class="module__navbar-button"
+        dark
+        x-small
+        depressed
+        color="red"
+        @click="currentPage = 'setup'"
+        >Exit Preview</v-btn
+      >
+
+      <v-menu v-if="currentPage != 'preview'" offset-y left>
         <template v-slot:activator="{ on, attrs }">
           <v-btn v-bind="attrs" small icon class="module__navbar-button" v-on="on">
             <v-icon color="grey lighten-1">mdi-cog</v-icon></v-btn
@@ -56,7 +75,14 @@
         </div>
       </div>
       <div class="module__body">
-        <!-- <v-progress-linear color="#dedede" height="2" value="100" buffer-value="100" stream /> -->
+        <v-progress-linear
+          v-if="currentPage != 'preview'"
+          color="#dedede"
+          height="2"
+          value="100"
+          buffer-value="100"
+          stream
+        />
         <div v-if="currentPage != 'preview'" class="module__pagination">
           <div v-for="page in subpages" :key="page" :class="{ active: currentPage == page }">
             <div class="module__pagination-button--active" />

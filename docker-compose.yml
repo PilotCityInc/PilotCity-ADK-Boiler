@@ -4,7 +4,7 @@ networks:
     driver: bridge
 services:
   microapp: #in container-based development
-    image: pilotcity/boiler
+    build: .
     container_name: microapp
     environment:
       - NODE_ENV=development
@@ -14,7 +14,7 @@ services:
       - npm_config_unsafe_perm=true
     volumes:
       - ./:/usr/src/app
-      - usr/src/app/node_modules
+      - /usr/src/app/node_modules
     ports:
       - 8080:8080
     stdin_open: true

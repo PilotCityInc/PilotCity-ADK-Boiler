@@ -2,12 +2,9 @@
   "author": "Juxsta",
   "license": "MIT",
   "main": "/dist/index.ts",
-  "name": "@PilotCityInc/pc-boiler-plate",
+  "name": "developer-adk-boiler",
   "version": "0.1.0",
   "description": "PilotCity Development Kit Template for creating your own Program Activities",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/PilotCityInc/PilotCity-PDK-Boiler.git"

@@ -237,7 +237,7 @@
               <v-btn class="" icon><v-icon color="grey lighten-2">mdi-thumb-up</v-icon></v-btn>
 
               <v-btn class="" icon><v-icon color="grey lighten-2">mdi-thumb-down</v-icon></v-btn>
-              <!-- 
+              <!--
               <v-btn x-small outlined depressed class="mx-0">Reply</v-btn>
 
               <v-btn small class="" icon><v-icon color="grey lighten-2">mdi-flag</v-icon></v-btn> -->
@@ -352,35 +352,6 @@ export default {
     'module-presets': Module.Presets,
     'module-preview': Module.Default
   },
-  data: () => ({
-    events: [],
-    input: null,
-    nonce: 0
-  }),
-
-  computed: {
-    timeline() {
-      return this.events.slice().reverse();
-    }
-  },
-
-  methods: {
-    comment() {
-      const time = new Date().toTimeString();
-      this.events.push({
-        id: this.nonce,
-        text: this.input,
-        time: time.replace(/:\d{2}\sGMT-\d{4}\s\((.*)\)/, (match, contents, offset) => {
-          return ` ${contents
-            .split(' ')
-            .map(v => v.charAt(0))
-            .join('')}`;
-        })
-      });
-      this.input = null;
-    }
-  },
-
   setup() {
     // ENTER ACTIVITY NAME BELOW
     const moduleName = ref('Activity Name');
@@ -408,6 +379,33 @@ export default {
       instruct: ['']
     });
     const menu = ref(false);
+    // timeline
+    const timelineData = reactive({
+      events: [] as {
+        id: number;
+        text: string;
+        time: string;
+      }[],
+      input: '',
+      nonce: 0
+    });
+    const timeline = computed(() => {
+      return timelineData.events.slice().reverse();
+    });
+    function comment() {
+      const time = new Date().toTimeString();
+      timelineData.events.push({
+        id: timelineData.nonce,
+        text: timelineData.input,
+        time: time.replace(/:\d{2}\sGMT-\d{4}\s\((.*)\)/, (match, contents, offset) => {
+          return ` ${contents
+            .split(' ')
+            .map((v: string) => v.charAt(0))
+            .join('')}`;
+        })
+      });
+      timelineData.input = '';
+    }
     return {
       ...toRefs(color as any),
       ...toRefs(page as any),

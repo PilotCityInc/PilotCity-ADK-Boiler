@@ -339,11 +339,12 @@ body {
 }
 </style>
 <script lang="ts">
-import { computed, reactive, ref, toRefs } from '@vue/composition-api';
+import { computed, reactive, ref, toRefs, PropType, defineComponent } from '@vue/composition-api';
 import '@/styles/module.scss';
+import { Collection } from 'mongodb';
 import * as Module from './components';
 
-export default {
+export default defineComponent({
   name: 'ModuleName',
 
   components: {
@@ -352,7 +353,21 @@ export default {
     'module-presets': Module.Presets,
     'module-preview': Module.Default
   },
-  setup() {
+  props: {
+    programCollection: {
+      required: true,
+      type: Object as PropType<Collection>
+    },
+    programId: {
+      require: true,
+      type: String
+    }
+  },
+  setup(props) {
+    //
+    props.programCollection.findOne({
+      _id: props.programId
+    });
     // ENTER ACTIVITY NAME BELOW
     const moduleName = ref('Activity Name');
     const page = reactive({
@@ -416,5 +431,5 @@ export default {
       getColor
     };
   }
-};
+});
 </script>

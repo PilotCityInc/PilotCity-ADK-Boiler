@@ -1,6 +1,11 @@
 name: 'NPM Publish'
-on: Publish'
-
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
 jobs:
   package:
     runs-on: ubuntu-latest

@@ -1,8 +1,5 @@
 name: 'NPM Publish'
-on:
-  push:
-    branches:
-    - master  
+on: [push]
 jobs:
   package:
     runs-on: ubuntu-latest

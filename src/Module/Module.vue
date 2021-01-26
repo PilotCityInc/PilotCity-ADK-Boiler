@@ -159,28 +159,6 @@
             >
           </v-card>
         </v-menu>
-
-        <!-- ALL STAKEHOLDERS-->
-        <!-- <v-btn small disabled outlined depressed
-          ><v-icon left>mdi-message-reply-text</v-icon>Chat with all stakeholders</v-btn
-        > -->
-
-        <!-- FOR EMPLOYER ORGANIZERS -->
-        <!-- <v-btn disabled outlined depressed
-          ><v-icon left>mdi-message-reply-text</v-icon>Comment on student participant's
-          activity</v-btn
-        > -->
-        <!-- FOR STUDENT PARTICIPANTS: Ability to view and reply to employer, teacher, school and parent stakeholder comments -->
-        <!-- <v-btn small disabled outlined depressed
-          ><v-icon left>mdi-message-reply-text</v-icon>Chat with stakeholders and your
-          organizers</v-btn
-        > -->
-
-        <!-- FOR TEACHER, SCHOOL OR PARENT STAKEHOLDERS: Ability to view and reply to student and employer comments -->
-        <!-- <v-btn disabled outlined depressed
-          ><v-icon left>mdi-message-reply-text</v-icon>Comment on student participant's
-          activity</v-btn
-        > -->
         <v-timeline dense clipped>
           <v-timeline-item fill-dot class="white--text mb-12" color="pink" large>
             <template v-slot:icon>
@@ -287,9 +265,9 @@ body {
 }
 </style>
 <script lang="ts">
-import { computed, reactive, ref, toRefs, PropType, defineComponent } from '@vue/composition-api';
+import { computed, reactive, ref, toRefs, defineComponent } from '@vue/composition-api';
 import '../styles/module.scss';
-import { Collection } from 'mongodb';
+// import { Collection } from 'mongodb';
 import * as Module from './components';
 
 export default defineComponent({
@@ -301,21 +279,21 @@ export default defineComponent({
     'module-presets': Module.Presets,
     'module-preview': Module.Default
   },
-  props: {
-    programCollection: {
-      required: true,
-      type: Object as PropType<Collection>
-    },
-    programId: {
-      require: true,
-      type: String
-    }
-  },
-  setup(props) {
+  //   props: {
+  // programCollection: {
+  //   required: true,
+  //   type: Object as PropType<Collection>
+  // },
+  // programId: {
+  //   require: true,
+  //   type: String
+  // }
+  //   },
+  setup() {
     //
-    props.programCollection.findOne({
-      _id: props.programId
-    });
+    // props.programCollection.findOne({
+    //   _id: props.programId
+    // });
     // ENTER ACTIVITY NAME BELOW
     const moduleName = ref('Activity Name');
     const page = reactive({
@@ -360,7 +338,7 @@ export default defineComponent({
       timelineData.events.push({
         id: timelineData.nonce,
         text: timelineData.input,
-        time: time.replace(/:\d{2}\sGMT-\d{4}\s\((.*)\)/, (match, contents, offset) => {
+        time: time.replace(/:\d{2}\sGMT-\d{4}\s\((.*)\)/, (match, contents) => {
           return ` ${contents
             .split(' ')
             .map((v: string) => v.charAt(0))
@@ -370,13 +348,16 @@ export default defineComponent({
       timelineData.input = '';
     }
     return {
-      ...toRefs(color as any),
-      ...toRefs(page as any),
+      ...toRefs(color),
+      ...toRefs(page),
       config,
       moduleName,
       menu,
       getComponent,
-      getColor
+      getColor,
+      ...toRefs(timelineData),
+      timeline,
+      comment
     };
   }
 });

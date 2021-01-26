@@ -6,7 +6,7 @@ const install: any = (Vue: any, options: any) => {
   if (install.installed) return;
   install.installed = true;
   state.dbType = 'plugin';
-  Vue.component('pdk-module', {
+  Vue.component('adk-boiler', {
     Module
   });
 };

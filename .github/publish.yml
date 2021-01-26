@@ -1,0 +1,19 @@
+name: 'NPM Publish'
+on: Publish'
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14.5.3'
+          registry-url: 'https://registry.npmjs.org'
+      - run: yarn
+      - run: yarn remove @vue/composition-api
+      - run: yarn add --peer @vue/composition-api
+      - run: yarn version
+      - run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

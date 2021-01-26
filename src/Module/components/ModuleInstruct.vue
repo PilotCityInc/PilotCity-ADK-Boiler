@@ -1,5 +1,5 @@
 <template>
-  <!--  TODO: make the inputs into actual components -->
+  <!--  TODO: make the inputs into actual components /modification -->
   <v-container class="module-instruct">
     <div class="module-instruct__container">
       <div class="module-instruct__description">

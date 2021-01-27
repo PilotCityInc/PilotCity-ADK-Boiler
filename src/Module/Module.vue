@@ -68,9 +68,9 @@
           <v-icon light x-large :color="selectedColor">mdi-progress-question</v-icon>
         </div>
         <div class="module__header text-md-h5 text-sm-subtitle-1 d-flex align-center">
-          <input :value="moduleName" type="text" class="module__header-text" />
+          <input disabled :value="moduleName" type="text" class="module__header-text" />
           <v-chip-group class="module__header-chips"
-            ><v-chip disabled dark small>Preset Tags</v-chip>
+            ><v-chip color="white" disabled dark small>Preset Tags</v-chip>
           </v-chip-group>
         </div>
       </div>

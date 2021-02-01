@@ -16,7 +16,6 @@
             class="font-weight-bold text-body-1"
             hide-details
             dense
-            disabled
           ></v-textarea>
         </div>
         <div class="module-instruct__instructions">
@@ -44,7 +43,6 @@
                 outlined
                 hide-details
                 dense
-                disabled
                 :error-messages="errors"
                 class="font-weight-bold text-body-1"
               ></v-textarea>

@@ -16,6 +16,8 @@
             class="font-weight-bold text-body-1"
             hide-details
             dense
+            auto-grow
+            disabled
           ></v-textarea>
         </div>
         <div class="module-instruct__instructions">
@@ -45,6 +47,8 @@
                 dense
                 :error-messages="errors"
                 class="font-weight-bold text-body-1"
+                auto-grow
+                disabled
               ></v-textarea>
             </validation-provider>
           </div>

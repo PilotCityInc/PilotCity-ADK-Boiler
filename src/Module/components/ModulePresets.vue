@@ -10,8 +10,14 @@
       <v-divider class="presets__divider"></v-divider>
       <div class="presets__section-title">Defaults</div>
 
-      <v-select :items="group" label="What activity group does this belong to?" outlined></v-select>
       <v-select
+        disabled
+        :items="group"
+        label="What activity group does this belong to?"
+        outlined
+      ></v-select>
+      <v-select
+        disabled
         :items="required"
         label="Is this activity required for participants to complete?"
         outlined
@@ -22,13 +28,14 @@
         label="Lock activity group and placement order?"
         outlined
       ></v-select> -->
-      <v-select :items="deliverable" label="Is this a deliverable?" outlined></v-select>
+      <v-select disabled :items="deliverable" label="Is this a deliverable?" outlined></v-select>
       <!-- <v-select
         :items="accessibility"
         label="Make this activity accessible to participants anytime?"
         outlined
       ></v-select> -->
       <v-select
+        disabled
         :items="endEarly"
         label="Allow participants to end program early after completion of this activity?"
         outlined
@@ -57,7 +64,7 @@
       <!-- Delete break when the two delete buttons above and below have been integrated as one solution -->
       <br />
       <!-- If activity is optional, show button below -->
-      <div><v-btn color="red" dark depressed>Delete Activity</v-btn></div>
+      <div><v-btn color="red" disabled depressed>Delete Activity</v-btn></div>
     </div>
   </v-container>
 </template>

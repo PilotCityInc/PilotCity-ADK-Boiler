@@ -133,7 +133,7 @@ margin:5px;
    justify-content: center;
    margin-bottom: 38px;
    display: grid;
-   grid-template-columns: repeat(3, 1fr);
+   grid-template-columns: repeat(2, 1fr);
    grid-template-rows: 1fr;
    & > div.active{
      & .module__pagination-button{

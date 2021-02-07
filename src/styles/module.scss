@@ -161,7 +161,7 @@ margin:5px;
  }
   @media only screen and (max-width: 600px){
     .module__pagination{
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       grid-template-rows: 1fr 1fr;
     }
     .module__page{

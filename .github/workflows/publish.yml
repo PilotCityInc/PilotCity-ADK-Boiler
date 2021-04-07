@@ -16,8 +16,8 @@ jobs:
           node-version: '14.15.3'
           registry-url: 'https://registry.npmjs.org'
       - run: yarn
-      - run: yarn remove @vue/composition-api
-      - run: yarn add --peer @vue/composition-api
+      - run: yarn remove @vue/composition-api vuetify
+      - run: yarn add --peer @vue/composition-api vuetify
       - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
